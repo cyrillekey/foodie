@@ -28,7 +28,7 @@
 #mainbar ul li{
     width: 100vw;
     border-bottom:solid black thin;
-    height: 25px;
+    height: 30px;
     text-align: left;
     list-style: none;
     background-color: white;
@@ -62,6 +62,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    border:solid black thin;
     
         
 }
@@ -92,4 +93,8 @@
 #landing .btn:hover{
     background-color: brown;
     color: white;
+}
+.howit{
+    height: 37vh;
+    border: solid green;
 }
