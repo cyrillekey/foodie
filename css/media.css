@@ -68,10 +68,11 @@
 #landing{
     height: 50vh;
     margin-top: 0vh;
+    background-image: url("../img/owyj_lgqn_170228.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    border:solid black thin;
+    border:solid white thin;
     
         
 }
@@ -79,10 +80,10 @@
     margin-top: 10vh;
     font-family:sans-serif;
     text-align: center;
-    font-size: 5vh;
+    font-size: 6vh;
     text-transform: capitalize;
     font-weight: 600;
-    color: black;
+    color: white;
     
     
     
@@ -105,10 +106,35 @@
 }
 .howit{
     height: 37vh;
-    border: solid green;
+    
 }
 .howit h2{
     text-align: center;
     font-display: sans-serif;
     text-transform: capitalize;
+}
+.howit p{
+    
+    font-size:3.5vh;
+    text-align: left;
+    height: 23vh;
+    padding-top:8vh;
+    padding-left: 2vh
+}
+.products{
+    height: 99vh;
+    border: solid red;
+}
+.foodproduct{
+    border: solid green;
+    height: 20vh;
+    width: 40vw;
+    display: inline-flex;
+    margin: 4vh 1vh ;}
+.prodimg{
+    height: 15vh;
+    width:100%;
+    background-image: url("../img/mae-mu-IZ0LRt1khgM-unsplash.jpg");
+    background-position:center;
+    background-size: contain;
 }
