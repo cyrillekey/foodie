@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Foodie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css"  media="screen and (min-width:900px)">
+    <link rel="stylesheet" media="screen and (max-width:500px)" href="css/media.css" >
+    <script>
+        
+        function myFunction(){
+            var doc=document.getElementById('mainbar');
+            var puldown=document.getElementById('landing');
+            if(doc.style.display=="block"){
+                doc.style.display="none";
+                //puldown.style.marginTop="0vh";
+            }
+            else{
+                doc.style.display="block";
+                //puldown.style.marginTop="18vh";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="navsect">
+        <nav>
+            <div class="logo">
+                <img src="img/icons/nf1_(4).jpg" alt="">
+            </div>
+                
+            <div id="mainbar">
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Account</a></li>
+                    <li><a href="">Order</a></li>
+                    <li><a href="">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="hambur">
+                <a href="javascript:void(0);" onClick="myFunction()"><img src="img/icons/icons8-menu-50.png" alt="menu"></a>
+            </div>
+        </nav>
+    </div>
+    <div id="landing">
+        <h1>Lorem restaraunt</h1>
+        <a href="" class="btn">Order Now</a>
+    </div>
+    <div class="cat">
+        
+    </div>
+</body>
+</html>

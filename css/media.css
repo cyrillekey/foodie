@@ -1,0 +1,95 @@
+/* CSS Document */
+*{
+    margin: 0;
+    padding: 0;
+   
+}
+.navsect{
+    height: 8vh;
+    width: 100%;
+
+    
+}
+.logo{
+    width: 50px;
+    height: 8vh;
+    top: 0;
+    left: 0;
+}
+.logo img{
+    margin-top: 1vh;
+    height: 6vh;
+    margin-left: 1vw;
+}
+#mainbar{
+    display: none;
+    position: absolute;
+}
+#mainbar ul li{
+    width: 100vw;
+    border-bottom:solid black thin;
+    height: 25px;
+    text-align: left;
+    list-style: none;
+    background-color: white;
+    
+}
+#mainbar ul li a{
+    text-decoration: none;
+   color: black;
+
+}
+#mainbar ul li a:hover{
+    color: red;
+}
+.hambur{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 8vh;
+}
+.hambur img{
+    margin-top: 1.5vh;
+    height: 6vh;
+    margin-right: 2vw;
+    border: solid yellow;
+    border-radius: 4px;
+    
+}
+#landing{
+    height: 50vh;
+    margin-top: 0vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+        
+}
+#landing h1{
+    margin-top: 10vh;
+    font-family:sans-serif;
+    text-align: center;
+    font-size: 5vh;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: black;
+    
+    
+    
+}
+#landing .btn{
+    padding: 2vh;
+    margin-left:20px;
+    position: absolute;
+    margin-top: 8vh;
+    background-color:black;
+    border-radius: 60px;
+    text-decoration: none;
+    color: wheat;
+    
+    
+}
+#landing .btn:hover{
+    background-color: brown;
+    color: white;
+}
