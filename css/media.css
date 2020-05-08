@@ -42,17 +42,26 @@
 #mainbar ul li a:hover{
     color: red;
 }
+.cart{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 52px;
+}
+.cart img{
+    height: 8vh;
+    margin-top: 1.vh;
+}
 .hambur{
     position: absolute;
     top: 0;
     right: 0;
-    height: 8vh;
+    height: 6vh;
 }
 .hambur img{
     margin-top: 1.5vh;
     height: 6vh;
     margin-right: 2vw;
-    border: solid yellow;
     border-radius: 4px;
     
 }
@@ -97,4 +106,9 @@
 .howit{
     height: 37vh;
     border: solid green;
+}
+.howit h2{
+    text-align: center;
+    font-display: sans-serif;
+    text-transform: capitalize;
 }
