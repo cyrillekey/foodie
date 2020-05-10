@@ -83,7 +83,11 @@
     padding: 20px;
     display: none;
     overflow: scroll;
+<<<<<<< HEAD
     height: 50%;
+=======
+    height: 50vh;
+>>>>>>> 9c816f2566f8ae25c66722dafc1268b864aa0359
     
 }
 .shopping-cart .shopping-cart-header{
