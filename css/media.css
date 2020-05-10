@@ -70,14 +70,16 @@
     white-space: nowrap;
 }
 .shopping-cart{
-    margin:20px 0;
+    margin:0 0;
     float: right;
     background: white;
-    width: 320px;
-    position: relative;
+    width: 70vw;
+    position: absolute;
     border-radius: 3px;
     padding: 20px;
     display: none;
+    overflow: scroll;
+    height: 60vh;
     
 }
 .shopping-cart .shopping-cart-header{
