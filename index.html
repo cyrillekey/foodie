@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css"  media="screen and (min-width:900px)">
     <link rel="stylesheet" media="screen and (max-width:600px)" href="css/media.css" >
+    <script src="js/jquery.js"></script>
     <script>
         
         function myFunction(){
             var doc=document.getElementById('mainbar');
-            var puldown=document.getElementById('landing');
             if(doc.style.display=="block"){
                 doc.style.display="none";
                
@@ -20,7 +20,19 @@
                 
             }
         }
-    </script>
+        function myFunction1(){
+            var doc=document.getElementById('cart_click');
+            if(doc.style.display=="block"){
+                doc.style.display="none";
+               
+            }
+            else{
+                doc.style.display="block";
+                
+            }
+        }
+        
+    </script> 
 </head>
 <body>
     <div class="navsect">
@@ -38,13 +50,66 @@
                 </ul>
             </div>
             <div class="cart">
-                <a href=""><img src="img/icons/icons8-shopping-cart-50.png" alt=""></a>
+                <a href="javascript:void(0);" onClick="myFunction1()"><img src="img/icons/icons8-shopping-cart-50.png" alt="" ></a>
             </div>
             <div id="hambur">
                 <a href="javascript:void(0);" onClick="myFunction()"><img src="img/icons/icons8-menu-50.png" alt="menu"></a>
             </div>
         </nav>
     </div>
+    
+    <div class="container">
+        <div class="shopping-cart" id="cart_click">
+            <div class="shopping-cart-header">
+                <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>
+                <div class="shopping-cart-total">
+                    <span class="lighter-text">Total</span>
+                    <span class="main-color-text">$125.27</span>
+                </div>
+            </div>
+                <ul class="shopping-cart-items">
+                    <li class="clearfix">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="">
+                        <span class="item-name">Banana chips</span>
+                        <span class="item-price">$12.99</span>
+                        <span class="item-quantity">Quantity:01</span>
+                        
+                    </li>
+                    <li class="clearfix">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="">
+                        <span class="item-name">Banana chips</span>
+                        <span class="item-price">$12.99</span>
+                        <span class="item-quantity">Quantity:01</span>
+                        
+                    </li>
+                    <li class="clearfix">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="">
+                        <span class="item-name">Banana chips</span>
+                        <span class="item-price">$12.99</span>
+                        <span class="item-quantity">Quantity:01</span>
+                        
+                    </li>
+                    <li class="clearfix">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="">
+                        <span class="item-name">Banana chips</span>
+                        <span class="item-price">$12.99</span>
+                        <span class="item-quantity">Quantity:01</span>
+                        
+                    </li>
+                    <li class="clearfix">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="">
+                        <span class="item-name">Banana chips</span>
+                        <span class="item-price">$12.99</span>
+                        <span class="item-quantity">Quantity:01</span>
+                        
+                    </li>
+                </ul>
+                <a href="" class="button">Checkout</a>  
+        </div>
+    </div>
+    
+    
+    
     <div id="landing">
         <h1>Lorem restaraunt</h1>
         <p>Get your food easily with the click of a button</p>
