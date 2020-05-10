@@ -1,4 +1,8 @@
 /* CSS Document */
+
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
 *{
     margin: 0;
     padding: 0;
@@ -79,7 +83,7 @@
     padding: 20px;
     display: none;
     overflow: scroll;
-    height: 60vh;
+    height: 50%;
     
 }
 .shopping-cart .shopping-cart-header{
