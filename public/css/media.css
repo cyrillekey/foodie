@@ -105,6 +105,7 @@
     display: block;
     padding-top: 10px;
     font-size: 16px;
+    text-transform: capitalize;
 }
 .shopping-cart .shopping-cart-items .item-price{
     color: #6394f8;
@@ -130,6 +131,10 @@
 }
 .shopping-cart ul li{
     list-style: none;
+}
+.pdimg{
+    height: 15vh;
+    width: 30vw;
 }
 .cart-icon{
     color: #515783;
@@ -213,72 +218,27 @@
     background-color: black;
     color: white;
 }
-.menu{
-    border: solid green;
-}
 .menu h1{
     padding-top: 2vh;
     text-align: center;
     font-weight: 600;
     font-size: 6vh;
     text-transform: capitalize;
-}/*
-.products{
-    display: flex;
-    flex-wrap: wrap;
 }
-.product-card{
-   display: flex;
-    flex-direction: column;
-    padding: 2%;
-    flex:1 46%;
-    background-color: #fff;
-    box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.25);
-    flex-grow: 0;
-    
-    
-}
-.product-image img{
-    max-width: 100%;
-}
-.product-info{
-    
-    margin-top:0 auto;
-    padding-top: 20px;
-    text-align: center;
-}
-.addto{
-    text-decoration: none;
-    color: white;
-    border-radius: 60px;
-    background-color: black;
-    padding: 0.3vh 3vw;
-    font-size: 2.5vh;
-}
-.title{
-    
-}
-@media(max-width:360px){
-    .product-card{
-        flex: 1 48%;
-    }
-}
-*/
-
 .row {
     width: 100%;
     -webkit-box-pack: start;
-            justify-content: flex-start;
+    justify-content: flex-start;
     display: -webkit-box;
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-            flex-flow: row wrap;
+    flex-flow: row wrap;
   }
   
   .product, .product--blue, .product--orange, .product--red, .product--green, .product--yellow, .product--pink {
     box-shadow: 1px 5px 15px #CCC;
-    width: 15em;
+    /*width: 15em;*/
     height: auto;
     border-radius: 3px;
     padding: 2em;
@@ -286,7 +246,8 @@
     overflow: hidden;
     position: relative;
     -webkit-box-flex: 1;
-            flex: auto;
+    flex-grow: unset;
+    flex: 1 24%;
   }
   .product--blue {
     background: linear-gradient(-45deg,wheat 50%, rgba(255, 255, 255, 0.5) 50%);
@@ -365,4 +326,110 @@
     color: rgba(43, 45, 66, 0.7);
     font-size: 1.5em;
   }
-  
+  .viewall{
+      text-align: center;
+  }
+  .viewall a{
+      text-decoration: none;
+      color: black;
+      font-size: 2.5vh;
+  }
+  .viewall a:hover{
+      color: red;
+  }
+  .logitle{
+      text-align: center;
+      padding-top: 4vh;
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  .loginpage{
+      background-color: #f7f7f7;
+      height: 92vh;
+  }
+  form{
+      padding-top: 4vh;
+  }
+.logi{
+    display:block;
+    font-size: 3vh;
+    margin-top: 0.5vh;
+    margin-left: 4vw;
+}
+.logi input{
+    display: block;
+    width: 90%;
+    height: 5vh;
+    border: green solid thin;
+    border-radius: 4px;
+    padding-left: 8px;
+}
+.loginbut{
+    margin-left: 12vw;
+    width: 75vw;
+    margin-top: 2vh;
+    height:5vh;
+    border: none;
+    border-radius: 6px;
+    background-color: palevioletred;
+    margin-bottom: 2vh;
+    color: white;
+
+}
+.loginbut:hover{
+    background-color: #6394f8;
+}
+.error{
+    display: none;
+    margin-top: 1vh;
+    font-size: 12px;
+    margin-left: 3vw;
+    color: red;
+}
+h2{
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+    font-size: 15px;
+}
+h2 span{
+    padding: 0 10px;
+    background-color:#f7f7f7;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.accounta li{
+    margin-bottom: 1vh;
+}
+.accounta li a{
+    text-decoration: none;
+    padding-left: 8px;
+    color: black;
+    text-transform: capitalize;
+}
+.accounta li a:hover{
+    color: red;
+}
+.social{
+    height: 25vh;
+}
+.total{
+    margin-left: 70%;
+}
+.socialcol{
+    height: 10vh;
+    margin-top: 8vh;
+}
+h5{
+    text-align: center;
+    margin-top: 6vh;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 10px;
+}
+.socialicons{
+    margin-left: 7vw;
+    text-decoration: none;
+    border: solid;
+    border-radius: 6px;
+    padding: 4px;
+}
