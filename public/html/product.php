@@ -1,6 +1,16 @@
 <?php
 session_start();
 include('../../conf/conf.php');
+if(isset($_SESSION['cart'])){
+  $items=$_SESSION['cart'];
+  $cartitems=explode(",",$items);
+  $total=0;
+}
+else{
+  $items=array();
+  $cartitems=array();
+  $total=0;
+}
 ?>
   <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +21,33 @@ include('../../conf/conf.php');
     <title>Document</title>
     <link rel="stylesheet" href="../css/style.css"  media="screen and (min-width:600px)">
     <link rel="stylesheet" media="screen and (max-width:600px)" href="../css/media.css" >
-</head>
+    <script>
+        
+        function myFunction(){
+            var doc=document.getElementById('mainbar');
+            if(doc.style.display=="block"){
+                doc.style.display="none";
+               
+            }
+            else{
+                doc.style.display="block";
+                
+            }
+        }
+        function myFunction1(){
+            var doc=document.getElementById('cart_click');
+            if(doc.style.display=="block"){
+                doc.style.display="none";
+               
+            }
+            else{
+                doc.style.display="block";
+                
+            }
+        }
+        
+    </script> 
+  </head>
 
 <body>
     <div class='row'>

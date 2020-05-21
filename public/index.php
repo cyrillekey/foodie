@@ -98,7 +98,7 @@ else{
                                 <li class="clearfix">
                                 <img class="pdimg" src="img/'.$row['product_image'].'" alt="product image">
                                 <span class="item-name">'.$row['product_name'].'.</span>
-                                <span class="item-price">$ '.$row['product_unit_price'].'</span>
+                                <span class="item-price">$ '.$row['product_unit_price'].'.00</span>
                                 <span class="item-quantity">Quantity:01</span>
                                 <a href="handle/delfrom.php?remove='.$row['product_id'].'" class="item-quantity">Remove</a>
                         
@@ -123,7 +123,7 @@ else{
                     ?>
                     
                 </ul>
-                <a href="" class="button">Checkout</a>  
+                <a href="html/checkout.html" class="button">Checkout</a>  
         </div>
     </div>
     
@@ -132,7 +132,7 @@ else{
     <div id="landing">
         <h1>Lorem restaraunt</h1>
         <p>Get your food easily with the click of a button</p>
-        <a href="" class="btn">Order Now</a>
+        <a href="html/product.php" class="btn">Order Now</a>
     </div>
     <div class="menu">
         <h1>What we serve</h1>
