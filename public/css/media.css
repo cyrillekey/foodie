@@ -241,16 +241,16 @@
   
   .product, .product--blue, .product--orange, .product--red, .product--green, .product--yellow, .product--pink {
     box-shadow: 1px 5px 15px #CCC;
-    /*width: 15em;*/
+    width: 15em;
     height: auto;
     border-radius: 3px;
     padding: 2em;
-    margin: 1em;
+    margin:2em 2em ;
     overflow: hidden;
     position: relative;
     -webkit-box-flex: 1;
     flex-grow: unset;
-    flex: 1 24%;
+    flex: auto;
   }
   .product--blue {
     background: linear-gradient(-45deg,wheat 50%, rgba(255, 255, 255, 0.5) 50%);
@@ -271,7 +271,11 @@
             flex-flow: column wrap;
   }
   .product_inner p {
-    color: rgba(255, 255, 255, 0.9);
+    color: black;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    margin-top: .5em;
   }
   .product_inner button {
     border: 1px solid rgba(255, 255, 255, 0.5);
@@ -762,3 +766,98 @@ a.remove:hover{
     letter-spacing: -.025em;
     width: 35%;
 }
+.paysumary{
+    margin-top:2vh;
+
+}
+.paysumary .paylabel{
+    font-size: 1.2em;
+    margin-left: .5em;
+}
+.paysumary .payvalue{
+    float: right;
+    margin-right: 1em;
+}
+.shiping{
+    height: 38vh;
+    border: solid;
+}
+.payment{
+    margin-top: 2vh;
+}
+@media only screen and (min-width:500px){
+    .product, .product--blue, .product--orange, .product--red, .product--green, .product--yellow, .product--pink {
+      box-shadow: 1px 5px 15px #CCC;
+      width: 15em;
+      height: auto;
+      border-radius: 3px;
+      padding: 1em;
+      margin: 1.5em;
+      overflow: hidden;
+      position: relative;
+      -webkit-box-flex: 1;
+      flex-grow: unset;
+      flex: 1 23%;
+      flex-grow: inherit;
+    }
+    .product_inner button {
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        color: #FFF;
+        border-radius: 3px;
+        padding: 1em 2em;
+        margin: 1em 0 0 0;
+        background: none;
+        cursor: pointer;
+        -webkit-transition: background ease-in .25s;
+        transition: background ease-in .25s;
+      }
+  }
+
+@media only screen and (min-width:700px){
+    .product, .product--blue, .product--orange, .product--red, .product--green, .product--yellow, .product--pink {
+      box-shadow: 1px 5px 15px #CCC;
+      width: 15em;
+      height: auto;
+      border-radius: 3px;
+      padding: 2em;
+      margin: 1.5em;
+      overflow: hidden;
+      position: relative;
+      -webkit-box-flex: 1;
+      flex-grow: unset;
+      flex: 1 24%;
+      flex-grow: inherit;
+    }
+  }
+  @media only screen and (min-width:900px){
+    .product, .product--blue, .product--orange, .product--red, .product--green, .product--yellow, .product--pink {
+      box-shadow: 1px 5px 15px #CCC;
+      width: 15em;
+      height: auto;
+      border-radius: 3px;
+      padding: 2em;
+      margin: 1.5em;
+      overflow: hidden;
+      position: relative;
+      -webkit-box-flex: 1;
+      flex-grow: unset;
+      flex: 1 19%;
+      flex-grow: inherit;
+    }
+  }
+  @media only screen and (min-width:1360px){
+    .product, .product--blue, .product--orange, .product--red, .product--green, .product--yellow, .product--pink {
+      box-shadow: 1px 5px 15px #CCC;
+      width: 15em;
+      height: auto;
+      border-radius: 3px;
+      padding: 2em;
+      margin: 1.5em;
+      overflow: hidden;
+      position: relative;
+      -webkit-box-flex: 1;
+      flex-grow: unset;
+      flex: 1 13%;
+      flex-grow: inherit;
+    }
+  }

@@ -14,4 +14,12 @@ if(isset($_GET['remove']) & !empty($_GET['remove'])){
 	$itemids = implode(",", $cartitems);
     $_SESSION['cart'] = $itemids;
 }
+if(isset($_GET['loca'])){
+    $loca=$_GET['loca'];
+    if($loca==2){
+        header('location:../html/checkout.php');
+    }
+}else{
+
 header('location:../index.php');
+}
