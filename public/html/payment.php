@@ -1,7 +1,6 @@
 <?php
 $total=0;
 $tax=0;$shippin=0;
-include_once('../../conf/pay-conf.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
