@@ -785,6 +785,12 @@ a.remove:hover{
 .payment{
     margin-top: 2vh;
 }
+/*
+shipping form
+*/
+
+/*media queeries*/
+
 @media only screen and (min-width:500px){
     .product, .product--blue, .product--orange, .product--red, .product--green, .product--yellow, .product--pink {
       box-shadow: 1px 5px 15px #CCC;

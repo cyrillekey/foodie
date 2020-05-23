@@ -30,7 +30,7 @@ else{
  <div class="progress">
         <ul class="progressbar">
             <li class="activeprog">Review Order</li>
-            <li>Make Payment</li>
+            <li>Shipping details</li>
             <li>Submit order</li>
         </ul>
     </div>
@@ -77,6 +77,7 @@ else{
                      }
                  
                  }
+                 
                  $shippin=0.03*$total;
                  $tax=0.015*$total;
                 }else{
@@ -115,7 +116,7 @@ else{
 
                 </li>
                 <li class="totalRow">
-                    <a href="payment.php" class="btn continue">Checkout</a>
+                    <a href="shipping.php" class="btn continue">Checkout</a>
                 </li>
             </ul>
         </div>
