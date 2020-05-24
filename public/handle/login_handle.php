@@ -1,0 +1,54 @@
+<?php
+include('../../conf/pdo_conf.php');
+if(isset($_POST['loginn'])){
+    $mail=$_POST['mail'];
+    $pwd=$_POST['pwd'];
+    if(empty($mail) || empty($pwd)){
+        header("location:../html/login.php?error=missing");
+        exit();
+    }
+    elseif (!filter_var($mail,FILTER_VALIDATE_EMAIL)) {
+        header("Location:../html/login.php?error=invalmail");
+        exit();
+    }else{
+        $sql="SELECT * FROM users_table WHERE user_email=?";
+        $stmt=$pdo->prepare($sql);
+        $stmt->execute([$mail]);
+        $row=$stmt->fetch(PDO::FETCH_ASSOC);
+        if(count(array_filter($row))==0){
+            header('location:../html/login.php?error=nouser');
+            exit();
+        }else{
+            $pwcheck=password_verify($pwd,$row['user_password']);
+            if($pwcheck==false){
+                header('location:../html/login.php?error=wrongpass');
+                exit();
+            }elseif($pwcheck==true){
+                session_start();
+                if(isset($_SESSION['cart'])){
+                    $items=$_SESSION['cart'];
+                    $cartitems=explode(",",$items);
+                    $_SESSION['username']=$row['user_id'];
+                    $_SESSION['usermail']=$row['user_email'];
+                    header("location:../html/checkout.php");
+                    exit();
+                }
+                else{
+                    $items=array();
+                    $cartitems=array();
+                $_SESSION['username']=$row['user_id'];
+                $_SESSION['usermail']=$row['user_email'];
+                header("location:../html/product.php");
+                exit();
+                }
+            }else{
+                header("location:../html/login.php");
+                exit();
+            }
+        }
+    }
+}
+else{
+    header("location:../html/login.php");
+    exit();
+}

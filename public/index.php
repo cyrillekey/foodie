@@ -106,12 +106,7 @@ else{
                                 ';      
                             $total+=$row['product_unit_price'];
                         }
-                    
                     }
-                
-                echo"
-                    <p class='total'>Total $$total</p>
-                ";
             }
                     else{
                         echo'
@@ -123,7 +118,7 @@ else{
                     ?>
                     
                 </ul>
-                <a href="" class="button">Checkout</a>  
+                <a href="html/checkout.php" class="button">Checkout</a>  
         </div>
     </div>
     
@@ -132,7 +127,7 @@ else{
     <div id="landing">
         <h1>Lorem restaraunt</h1>
         <p>Get your food easily with the click of a button</p>
-        <a href="" class="btn">Order Now</a>
+        <a href="html/product.php" class="btn">Order Now</a>
     </div>
     <div class="menu">
         <h1>What we serve</h1>
@@ -152,9 +147,9 @@ else{
                  <div class="product--blue">
                <div class="product_inner">
                  <img src="img/'.$row1['product_image'].'" width="300">
-                 <p>'.$row1['product_name'].'</p>
-                 <p>' . $row1['product_desc'] . '</p>
-                 <p>Price '.$row1['product_unit_price'].'</p>
+                 <p style="text-transform:capitalize;">'.$row1['product_name'].'</p>
+                 <!--<p>' . $row1['product_desc'] . '</p>-->
+                 <p>Price $ '.$row1['product_unit_price'].'</p>
                  <a href="handle/addtocart.php?pdid='.$row1['product_id'].'">
                  <button>Add to basket</button>
                  </a>
