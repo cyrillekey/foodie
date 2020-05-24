@@ -67,7 +67,7 @@
 
 <body>
 <script>
-    var countDownDAte=new Date("may 24,2020 23:20:00");
+    var countDownDAte=new Date("may 24,2020 23:00:00");
     var x=setInterval(
         function(){
             var now=new Date().getTime();
