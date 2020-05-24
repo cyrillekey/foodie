@@ -21,6 +21,7 @@
     </div>
   <div class="forms cf">
     <h3 class="sectionHead cf"><span>1</span>Shipping Information</h3>
+    <form action="handle.php" method="post">
     <ul id="shippingInfo" class="shippingInfo cf">
       <li><label for="first Name" class="active">First Name</label>
         <input type="text" /></li>
@@ -52,9 +53,10 @@
          <input type="text" />
       </li>
       <li> 
-         <a href="payment.php" class="btn">Continue</a> 
+         <input type="submit" value="Continue" class="btn"> 
       </li>
     </ul>
+    </form>
     
 <!-- Billing Info -->
     

@@ -1,3 +1,10 @@
+<?php
+    if(isset($_GET['error'])){
+        $error=$_GET['error'];
+    }else{
+        $error=null;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,18 +63,31 @@
     </div>
     <div class="loginpage">
     <h1 class="logitle">Login</h1>
-    <form action="" method="post">
-        <label for="" class="logi">Email<input type="text" placeholder="Email" required>
-        <p class="error">Email does not exist</p>
+    <form action="../handle/login_handle.php" method="post">
+        <label for="" class="logi">Email<input name="mail" type="text" placeholder="Email" required>
+        <p class="error"><?php
+            if($error=='missing'){
+                echo"Field cannot be left empty";
+            }elseif($error=='invalmail'){
+                echo"Invalid email Address";
+            }elseif ($error=='nouser') {
+                echo'Account does not exist';
+            }
+        
+        ?></p>
         </label>
-        <label for="" class="logi">Password<input type="password" placeholder="Password" required>
-        <p class="error">Email does not exist</p>
+        <label for="" class="logi">Password<input name="pwd" type="password" placeholder="Password" required>
+        <p class="error"><?php
+            if($error=='wrongpass'){
+                echo'wrong Password';
+            }
+        ?></p>
         </label>
-        <button class="loginbut">Login</button>
+        <button class="loginbut" name="loginn">Login</button>
     </form>
     <ul class="accounta">
         <li><a href="">Forgot Password?</a></li>
-        <li><a href="">Don't have an account.</a></li>
+        <li><a href="signup.php">Don't have an account.</a></li>
     </ul>
     <h2><span>or</span></h2>
     <div class="social">

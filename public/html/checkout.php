@@ -116,7 +116,7 @@ else{
 
                 </li>
                 <li class="totalRow">
-                    <a href="shipping.php" class="btn continue">Checkout</a>
+                    <a href="../handle/transact.php" class="btn continue">Checkout</a>
                 </li>
             </ul>
         </div>
