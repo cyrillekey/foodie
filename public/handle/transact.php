@@ -2,8 +2,13 @@
 include('../../conf/conf.php');
 include('../../conf/pdo_conf.php');
 session_start();
+if(isset($_GET['status'])){
+    $status=$_GET['status'];
+}else{
+    $status=null;
+}
 if(isset($_SESSION['username'])){
-if (1) {
+if ($status=="COMPLETED") {
     $items = $_SESSION['cart'];
     $cartitems = explode(",", $items);
     $total = 0;
@@ -97,7 +102,7 @@ if (1) {
         exit();
     }
 } else {
-    header("location:../html/paymnet.php");
+    header("location:../html/payment.php");
     exit();
 }}else{
     header("location:../html/login.php");

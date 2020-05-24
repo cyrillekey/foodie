@@ -1,511 +1,205 @@
+<?php
+  session_start();
+  include('../../conf/pdo_conf.php');
+  $total=0;
+  $order=$_GET['ord'];
+  $sql="SELECT order_table.order_id, order_table.user_id, users_table.user_email, order_table.order_created, product_order_table.product_id, product_order_table.quantity,product_table.product_unit_price,product_table.product_name
+  FROM users_table INNER JOIN (order_table INNER JOIN (product_table INNER JOIN product_order_table ON product_table.product_id = product_order_table.product_id) ON order_table.order_id = product_order_table.order_id) ON users_table.user_id = order_table.user_id
+  WHERE (((order_table.order_id)=?))";
+    $stmt=$pdo->prepare($sql);
+    $stmt->execute([$order]);
+    while($row=$stmt->fetch(PDO::FETCH_OBJ)){
+      $total+=$row->product_unit_price;
+    }
+    $shippin = 0.03 * $total;
+        $tax = 0.015 * $total;
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style type="text/css">
-    @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
-
-    body {
-      margin: 0;
-      padding: 0;
-      background: #e1e1e1;
-    }
-
-    div,
-    p,
-    a,
-    li,
-    td {
-      -webkit-text-size-adjust: none;
-    }
-
-    .ReadMsgBody {
-      width: 100%;
-      background-color: #ffffff;
-    }
-
-    .ExternalClass {
-      width: 100%;
-      background-color: #ffffff;
-    }
-
-    body {
-      width: 100%;
-      height: 100%;
-      background-color: #e1e1e1;
-      margin: 0;
-      padding: 0;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    html {
-      width: 100%;
-    }
-
-    p {
-      padding: 0 !important;
-      margin-top: 0 !important;
-      margin-right: 0 !important;
-      margin-bottom: 0 !important;
-      margin-left: 0 !important;
-    }
-
-    .visibleMobile {
-      display: none;
-    }
-
-    .hiddenMobile {
-      display: block;
-    }
-
-    @media only screen and (max-width: 600px) {
-      body {
-        width: auto !important;
-      }
-
-      table[class=fullTable] {
-        width: 96% !important;
-        clear: both;
-      }
-
-      table[class=fullPadding] {
-        width: 85% !important;
-        clear: both;
-      }
-
-      table[class=col] {
-        width: 45% !important;
-      }
-
-      .erase {
-        display: none;
-      }
-    }
-
-    @media only screen and (max-width: 420px) {
-      table[class=fullTable] {
-        width: 100% !important;
-        clear: both;
-      }
-
-      table[class=fullPadding] {
-        width: 85% !important;
-        clear: both;
-      }
-
-      table[class=col] {
-        width: 100% !important;
-        clear: both;
-      }
-
-      table[class=col] td {
-        text-align: left !important;
-      }
-
-      .erase {
-        display: none;
-        font-size: 0;
-        max-height: 0;
-        line-height: 0;
-        padding: 0;
-      }
-
-      .visibleMobile {
-        display: block !important;
-      }
-
-      .hiddenMobile {
-        display: none !important;
-      }
-    }
-  </style>
+	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+	
   <title>Invoice</title>
+<style>
+    /*
+	 CSS-Tricks Example
+	 by Chris Coyier
+	 http://css-tricks.com
+  */
+
+  * { margin: 0; padding: 0; }
+  body { font: 14px/1.4 Georgia, serif; }
+  #page-wrap { width: 800px; margin: 0 auto; }
+
+  textarea { border: 0; font: 14px Georgia, Serif; overflow: hidden; resize: none; }
+  table { border-collapse: collapse; }
+  table td, table th { border: 1px solid black; padding: 5px; }
+
+  #header { height: 15px; width: 100%; margin: 20px 0; background: #222; text-align: center; color: white; font: bold 15px Helvetica, Sans-Serif; text-decoration: uppercase; letter-spacing: 20px; padding: 8px 0px; }
+
+  #address { width: 250px; height: 150px; float: left; }
+  #customer { overflow: hidden; }
+
+  #logo { text-align: right; float: right; position: relative; margin-top: 25px; border: 1px solid #fff; max-width: 540px; max-height: 100px; overflow: hidden; }
+  #logo:hover, #logo.edit { border: 1px solid #000; margin-top: 0px; max-height: 125px; }
+  #logoctr { display: none; }
+  #logo:hover #logoctr, #logo.edit #logoctr { display: block; text-align: right; line-height: 25px; background: #eee; padding: 0 5px; }
+  #logohelp { text-align: left; display: none; font-style: italic; padding: 10px 5px;}
+  #logohelp input { margin-bottom: 5px; }
+  .edit #logohelp { display: block; }
+  .edit #save-logo, .edit #cancel-logo { display: inline; }
+  .edit #image, #save-logo, #cancel-logo, .edit #change-logo, .edit #delete-logo { display: none; }
+  #customer-title { font-size: 20px; font-weight: bold; float: left; }
+
+  #meta { margin-top: 1px; width: 300px; float: right; }
+  #meta td { text-align: right;  }
+  #meta td.meta-head { text-align: left; background: #eee; }
+  #meta td textarea { width: 100%; height: 20px; text-align: right; }
+
+  #items { clear: both; width: 100%; margin: 30px 0 0 0; border: 1px solid black; }
+  #items th { background: #eee; }
+  #items textarea { width: 80px; height: 50px; }
+  #items tr.item-row td { border: 0; vertical-align: top; }
+  #items td.description { width: 300px; }
+  #items td.item-name { width: 175px; }
+  #items td.description textarea, #items td.item-name textarea { width: 100%; }
+  #items td.total-line { border-right: 0; text-align: right; }
+  #items td.total-value { border-left: 0; padding: 10px; }
+  #items td.total-value textarea { height: 20px; background: none; }
+  #items td.balance { background: #eee; }
+  #items td.blank { border: 0; }
+
+  #terms { text-align: center; margin: 20px 0 0 0; }
+  #terms h5 { text-transform: uppercase; font: 13px Helvetica, Sans-Serif; letter-spacing: 10px; border-bottom: 1px solid black; padding: 0 0 8px 0; margin: 0 0 8px 0; }
+  #terms textarea { width: 100%; text-align: center;}
+
+  textarea:hover, textarea:focus, #items td.total-value textarea:hover, #items td.total-value textarea:focus, .delete:hover { background-color:#EEFF88; }
+
+  .delete-wpr { position: relative; }
+  .delete { display: block; color: #000; text-decoration: none; position: absolute; background: #EEEEEE; font-weight: bold; padding: 0px 3px; border: 1px solid; top: -6px; left: -22px; font-family: Verdana; font-size: 12px; }
+    </style>
+
 </head>
 
 <body>
 
+	<div id="page-wrap">
 
+		<p id="header">INVOICE</p>
+		
+		<div id="identity">
+		
+            <p id="address"><?php
+            echo $_SESSION['username'];
+            ?>
+            <br>
+123 Appleseed Street
+Appleville, WI 53719
 
+Phone: (555) 555-5555</p>
 
+            <div id="logo">
 
-  <!-- Header -->
-  <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#e1e1e1">
-    <tr>
-      <td height="20"></td>
-    </tr>
-    <tr>
-      <td>
-        <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#ffffff" style="border-radius: 10px 10px 0 0;">
-          <tr class="hiddenMobile">
-            <td height="40"></td>
-          </tr>
-          <tr class="visibleMobile">
-            <td height="30"></td>
-          </tr>
+              <div id="logohelp">
+                <input id="imageloc" type="text" size="50" value="" /><br />
+                (max width: 540px, max height: 100px)
+              </div>
+              <img id="image" src="images/logo.png" alt="logo" />
+            </div>
+		
+		</div>
+		
+		<div style="clear:both"></div>
+		
+		<div id="customer">
 
-          <tr>
-            <td>
-              <table width="480" border="0" cellpadding="0" cellspacing="0" align="center" class="fullPadding">
-                <tbody>
-                  <tr>
-                    <td>
-                      <table width="220" border="0" cellpadding="0" cellspacing="0" align="left" class="col">
-                        <tbody>
-                          <tr>
-                            <td align="left"> <img src="http://www.supah.it/dribbble/017/logo.png" width="32" height="32" alt="logo" border="0" /></td>
-                          </tr>
-                          <tr class="hiddenMobile">
-                            <td height="40"></td>
-                          </tr>
-                          <tr class="visibleMobile">
-                            <td height="20"></td>
-                          </tr>
-                          <tr>
-                            <td style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: left;">
-                              Hello, Philip Brooks.
-                              <br> Thank you for shopping from our store and for your order.
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <table width="220" border="0" cellpadding="0" cellspacing="0" align="right" class="col">
-                        <tbody>
-                          <tr class="visibleMobile">
-                            <td height="20"></td>
-                          </tr>
-                          <tr>
-                            <td height="5"></td>
-                          </tr>
-                          <tr>
-                            <td style="font-size: 21px; color: #ff0000; letter-spacing: -1px; font-family: 'Open Sans', sans-serif; line-height: 1; vertical-align: top; text-align: right;">
-                              Invoice
-                            </td>
-                          </tr>
-                          <tr>
-                          <tr class="hiddenMobile">
-                            <td height="50"></td>
-                          </tr>
-                          <tr class="visibleMobile">
-                            <td height="20"></td>
-                          </tr>
-                          <tr>
-                            <td style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: right;">
-                              <small>ORDER</small> <?php echo $_GET['ord']?><br />
-                              <small><script>var today=new date();</script></small>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
-  <!-- /Header -->
-  <!-- Order Details -->
-  <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#e1e1e1">
-    <tbody>
-      <tr>
-        <td>
-          <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#ffffff">
-            <tbody>
-              <tr>
-              <tr class="hiddenMobile">
-                <td height="60"></td>
-              </tr>
-              <tr class="visibleMobile">
-                <td height="40"></td>
-              </tr>
-              <tr>
-                <td>
-                  <table width="480" border="0" cellpadding="0" cellspacing="0" align="center" class="fullPadding">
-                    <tbody>
-                      <tr>
-                        <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 10px 7px 0;" width="52%" align="left">
-                          Item
-                        </th>
-                        <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 0 7px;" align="left">
-                          <small>SKU</small>
-                        </th>
-                        <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 0 7px;" align="center">
-                          Quantity
-                        </th>
-                        <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 0 7px;" align="right">
-                          Subtotal
-                        </th>
-                      </tr>
-                      <tr>
-                        <td height="1" style="background: #bebebe;" colspan="4"></td>
-                      </tr>
-                      <tr>
-                        <td height="10" colspan="4"></td>
-                      </tr>
-                      <tr>
-                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #ff0000;  line-height: 18px;  vertical-align: top; padding:10px 0;" class="article">
-                          Beats Studio Over-Ear Headphones
-                        </td>
-                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;"><small>MH792AM/A</small></td>
-                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;" align="center">1</td>
-                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;" align="right">$299.95</td>
-                      </tr>
-                      <tr>
-                        <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>
-                      </tr>
-                      <tr>
-                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #ff0000;  line-height: 18px;  vertical-align: top; padding:10px 0;" class="article">Beats RemoteTalk Cable</td>
-                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;"><small>MHDV2G/A</small></td>
-                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;" align="center">1</td>
-                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;" align="right">$29.95</td>
-                      </tr>
-                      <tr>
-                        <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-              <tr>
-                <td height="20"></td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
+            <p id="customer-title">Foodie Home of Happy Meals.</p>
+
+            <table id="meta">
+                <tr>
+                    <td class="meta-head">Invoice #</td>
+                    <td><p><?php echo $_GET['ord']?></p></td>
+                </tr>
+                <tr>
+
+                    <td class="meta-head">Date</td>
+                    <td><p id="date"><?php echo date('d-m-yy')?></p></td>
+                </tr>
+                <tr>
+                    <td class="meta-head">Amount Due</td>
+                    <td><div class="due">$<?php echo $total?></div></td>
+                </tr>
+
+            </table>
+		
+		</div>
+		
+		<table id="items">
+		
+		  <tr>
+		      <th>Item</th>
+		      <th>Description</th>
+		      <th>Unit Cost</th>
+		      <th>Quantity</th>
+		      <th>Price</th>
       </tr>
-    </tbody>
-  </table>
-  <!-- /Order Details -->
-  <!-- Total -->
-  <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#e1e1e1">
-    <tbody>
-      <tr>
-        <td>
-          <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#ffffff">
-            <tbody>
-              <tr>
-                <td>
+      <?php
+      $sql="SELECT order_table.order_id, order_table.user_id, users_table.user_email, order_table.order_created, product_order_table.product_id, product_order_table.quantity,product_table.product_unit_price,product_table.product_name,product_table.product_desc
+      FROM users_table INNER JOIN (order_table INNER JOIN (product_table INNER JOIN product_order_table ON product_table.product_id = product_order_table.product_id) ON order_table.order_id = product_order_table.order_id) ON users_table.user_id = order_table.user_id
+      WHERE (((order_table.order_id)=?))";
+        $stmt=$pdo->prepare($sql);
+        $stmt->execute([$order]);
+      while($row=$stmt->fetch(PDO::FETCH_OBJ)){
+        echo'<tr class="item-row">
+        <td class="item-name"><div class="delete-wpr"><p style="text-transform:capitalize">'.$row->product_name.'</p></div></td>
+        <td class="description"><p style="text-transform:capitalize">'.$row->product_desc.'</p</td>
+        <td><p class="cost">'.$row->product_unit_price.'</p></td>
+        <td><p class="qty">1</p></td>
+        <td><span class="price">'.$row->product_unit_price.'</span></td>
+        </tr>';
+      }
 
-                  <!-- Table Total -->
-                  <table width="480" border="0" cellpadding="0" cellspacing="0" align="center" class="fullPadding">
-                    <tbody>
-                      <tr>
-                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
-                          Subtotal
-                        </td>
-                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; white-space:nowrap;" width="80">
-                          $329.90
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
-                          Shipping &amp; Handling
-                        </td>
-                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
-                          $15.00
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align:right; ">
-                          <strong>Grand Total (Incl.Tax)</strong>
-                        </td>
-                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align:right; ">
-                          <strong>$344.90</strong>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #b0b0b0; line-height: 22px; vertical-align: top; text-align:right; "><small>TAX</small></td>
-                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #b0b0b0; line-height: 22px; vertical-align: top; text-align:right; ">
-                          <small>$72.40</small>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <!-- /Table Total -->
+      ?>
+		  <tr id="hiderow">
+		    <td colspan="5"></td>
+		  </tr>
+		  
+		  <tr>
+		      <td colspan="2" class="blank"> </td>
+		      <td colspan="2" class="total-line">Subtotal</td>
+		      <td class="total-value"><div id="subtotal">$<?php echo $total?></div></td>
+		  </tr>
+		  <tr>
 
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <!-- /Total -->
-  <!-- Information -->
-  <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#e1e1e1">
-    <tbody>
-      <tr>
-        <td>
-          <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#ffffff">
-            <tbody>
-              <tr>
-              <tr class="hiddenMobile">
-                <td height="60"></td>
-              </tr>
-              <tr class="visibleMobile">
-                <td height="40"></td>
-              </tr>
-              <tr>
-                <td>
-                  <table width="480" border="0" cellpadding="0" cellspacing="0" align="center" class="fullPadding">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <table width="220" border="0" cellpadding="0" cellspacing="0" align="left" class="col">
+		      <td colspan="2" class="blank"> </td>
+		      <td colspan="2" class="total-line">Shipping</td>
+		      <td class="total-value"><div id="total">$<?php echo $shippin?></div></td>
+		  </tr>
+		  <tr>
+		      <td colspan="2" class="blank"> </td>
+		      <td colspan="2" class="total-line">Tax</td>
 
-                            <tbody>
-                              <tr>
-                                <td style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top; ">
-                                  <strong>BILLING INFORMATION</strong>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td width="100%" height="10"></td>
-                              </tr>
-                              <tr>
-                                <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
-                                  Philip Brooks<br> Public Wales, Somewhere<br> New York NY<br> 4468, United States<br> T: 202-555-0133
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-
-
-                          <table width="220" border="0" cellpadding="0" cellspacing="0" align="right" class="col">
-                            <tbody>
-                              <tr class="visibleMobile">
-                                <td height="20"></td>
-                              </tr>
-                              <tr>
-                                <td style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top; ">
-                                  <strong>PAYMENT METHOD</strong>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td width="100%" height="10"></td>
-                              </tr>
-                              <tr>
-                                <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
-                                  Credit Card<br> Credit Card Type: Visa<br> Worldpay Transaction ID: <a href="#" style="color: #ff0000; text-decoration:underline;">4185939336</a><br>
-                                  <a href="#" style="color:#b0b0b0;">Right of Withdrawal</a>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <table width="480" border="0" cellpadding="0" cellspacing="0" align="center" class="fullPadding">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <table width="220" border="0" cellpadding="0" cellspacing="0" align="left" class="col">
-                            <tbody>
-                              <tr class="hiddenMobile">
-                                <td height="35"></td>
-                              </tr>
-                              <tr class="visibleMobile">
-                                <td height="20"></td>
-                              </tr>
-                              <tr>
-                                <td style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top; ">
-                                  <strong>SHIPPING INFORMATION</strong>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td width="100%" height="10"></td>
-                              </tr>
-                              <tr>
-                                <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
-                                  Sup Inc<br> Another Place, Somewhere<br> New York NY<br> 4468, United States<br> T: 202-555-0171
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-
-
-                          <table width="220" border="0" cellpadding="0" cellspacing="0" align="right" class="col">
-                            <tbody>
-                              <tr class="hiddenMobile">
-                                <td height="35"></td>
-                              </tr>
-                              <tr class="visibleMobile">
-                                <td height="20"></td>
-                              </tr>
-                              <tr>
-                                <td style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top; ">
-                                  <strong>SHIPPING METHOD</strong>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td width="100%" height="10"></td>
-                              </tr>
-                              <tr>
-                                <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
-                                  UPS: U.S. Shipping Services
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-              <tr class="hiddenMobile">
-                <td height="60"></td>
-              </tr>
-              <tr class="visibleMobile">
-                <td height="30"></td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <!-- /Information -->
-  <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#e1e1e1">
-
-    <tr>
-      <td>
-        <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#ffffff" style="border-radius: 0 0 10px 10px;">
-          <tr>
-            <td>
-              <table width="480" border="0" cellpadding="0" cellspacing="0" align="center" class="fullPadding">
-                <tbody>
-                  <tr>
-                    <td style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: left;">
-                      Have a nice day.
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-          <tr class="spacer">
-            <td height="50"></td>
-          </tr>
-
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td height="20"></td>
-    </tr>
-  </table>
+		      <td class="total-value"><p id="paid">$<?php echo $tax?></p></td>
+		  </tr>
+		  <tr>
+		      <td colspan="2" class="blank"> </td>
+		      <td colspan="2" class="total-line balance">Grand Total</td>
+		      <td class="total-value balance"><div class="due">$<?php echo ($total+$tax+$shippin)?></div></td>
+		  </tr>
+		
+		</table>
+		
+		<div id="terms">
+		  <h5>Terms</h5>
+		  <p>I item is not delivered in one day please contact us to rectify.
+			  Thank you for shopping at foodie.
+		  </p>
+		</div>
+	
+	</div>
+	
 </body>
 
 </html>

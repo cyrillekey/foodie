@@ -117,7 +117,7 @@ else{
                 </li>
                 <li class="totalRow"><?php
                     if(isset($_SESSION['username'])){
-                    echo'<a href="../handle/transact.php" class="btn continue">Checkout</a>';
+                    echo'<a href="../html/payment.php" class="btn continue">Checkout</a>';
                     exit();
                     }else{
                         echo'<a href="../html/login.php" class="btn continue">Checkout</a>';
