@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +11,9 @@
 --><link rel="stylesheet" href="../css/check.css">
     <title>Shipping</title>
 </head>
+<?php
+if(isset($_SESSION['username'])){
+echo'
 <body>
 <div class="wrap">
   <div class="gov"> 
@@ -63,5 +69,9 @@
   </div>
 </div>
   </div>
-</body>
+</body>';}
+else{
+  header("location:../html/login.php");
+}
+?>
 </html>

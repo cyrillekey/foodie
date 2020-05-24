@@ -50,6 +50,10 @@
 #mainbar ul li a:hover{
     color: red;
 }
+#cart_click{
+    display: none;
+    z-index: 1;
+}
 .cart{
     position: absolute;
     top: 0;
@@ -228,6 +232,7 @@
     font-size: 6vh;
     text-transform: capitalize;
 }
+
 .row {
     width: 100%;
     -webkit-box-pack: start;
@@ -258,7 +263,7 @@
   
   .product img, .product--blue img, .product--orange img, .product--red img, .product--green img, .product--yellow img, .product--pink img {
     max-width: 100%;
-    height: auto !important;
+    height: auto;
     text-align: center;
   }
   .product_inner {

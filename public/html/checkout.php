@@ -115,9 +115,15 @@ else{
                     <span class="value">$<?php echo ($total+$shippin+$tax);?></span>
 
                 </li>
-                <li class="totalRow">
-                    <a href="../handle/transact.php" class="btn continue">Checkout</a>
-                </li>
+                <li class="totalRow"><?php
+                    if(isset($_SESSION['username'])){
+                    echo'<a href="../handle/transact.php" class="btn continue">Checkout</a>';
+                    exit();
+                    }else{
+                        echo'<a href="../html/login.php" class="btn continue">Checkout</a>';
+                        exit();
+                    }
+                ?></li>
             </ul>
         </div>
     </div>

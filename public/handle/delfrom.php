@@ -19,6 +19,9 @@ if(isset($_GET['loca'])){
     if($loca==2){
         header('location:../html/checkout.php');
     }
+    elseif($loca==3){
+        header("location:../html/product.php");
+    }
 }else{
 
 header('location:../index.php');

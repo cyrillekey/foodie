@@ -55,10 +55,9 @@ if (isset($_SESSION['cart'])) {
     </style>
     <title>Payment</title>
 </head>
-
-<body>
-    <?php
-    if (count(array_filter($cartitems))) {
+<?php 
+if(isset($_SESSION['username'])){
+    if (count(array_filter($cartitems))>0) {
         foreach ($cartitems as $key => $pid) {
             $sql = "SELECT * FROM product_table where product_id='$pid'";
             $stmt = mysqli_stmt_init($conn);
@@ -76,9 +75,14 @@ if (isset($_SESSION['cart'])) {
         $shippin = 0.03 * $total;
         $tax = 0.015 * $total;
     } else {
+        $tax=0;
+        $shippin=0;
+
     }
     
-    ?><div id="loader"></div>
+    echo'
+    <body>
+    <div id="loader"></div>
     <div id="main">
     <div class="progress">
         <ul class="progressbar">
@@ -92,60 +96,67 @@ if (isset($_SESSION['cart'])) {
         <ul>
             <li>
                 <span class="paylabel">Subtotal</span>
-                <span class="payvalue">$<?php echo $total ?></span>
+                <span class="payvalue">$'.$total.'</span>
             </li>
             <li>
                 <span class="paylabel">Shipping</span>
-                <span class="payvalue">$<?php echo $shippin ?></span>
+                <span class="payvalue">$'.$shippin .'</span>
             </li>
             <li>
                 <span class="paylabel">Tax</span>
-                <span class="payvalue">$<?php echo $tax ?></span>
+                <span class="payvalue">$'.$tax.'</span>
             </li>
             <li>
                 <span class="paylabel">Total</span>
-                <span class="payvalue">$<?php echo $shippin + $tax + $total ?></span>
+                <span class="payvalue">$'. ($shippin + $tax + $total) .'</span>
             </li>
         </ul>
 
     </div>
-    
-</div>
-
-<div id="paypalbutton">
+    <div id="paypalbutton">
 <p>By clicking this button,you agree with our terms and condition</p>
 <script src="https://www.paypal.com/sdk/js?client-id=AeVCaJobS538JCRWnROUJcaS6ymyl9sdRarKB8WYd1tzZ-Np4tXloec-Q_Z2-5rCeLxkJZUajix_2HEC"></script>
 </div>
-
 <script>paypal.Buttons({
     createOrder: function(data, actions) {
       // This function sets up the details of the transaction, including the amount and line item details.
       return actions.order.create({
         purchase_units: [{
           amount: {
-            value: <?php echo round(($total+$shippin+$tax),2)?>
+            value:'.round(($total+$shippin+$tax),2).'
           }
         }]
       }
       );
-    }
-    ,onApprove: function(data, actions) {
-      // This function captures the funds from the transaction.
-      var load=document.getElementById('loader');
-      load.style.display='block';
-      var pay=document.getElementById('main');
-      pay.style.display='none';
-      var pay2=document.getElementById('paypalbutton');
-      pay2.style.display='none';
-      return actions.order.capture().then(function(details) {
-        // This function shows a transaction success message to your buyer.
-        console.log(JSON.stringify(details));
-        window.location.href='../handle/transact.php?status='+details.status;
-        //alert('Transaction completed by ' + details.payer.name.given_name+'value'+'status'+details.status);
-      });
-    }
-  }).render('#paypalbutton');
-  </script>
-</body>
+    },onApprove: function(data, actions) {
+        // This function captures the funds from the transaction.
+        var load=document.getElementById("loader");
+        load.style.display="block";
+        var pay=document.getElementById("main");
+        pay.style.display="none";
+        var pay2=document.getElementById("paypalbutton");
+        pay2.style.display="none";
+        return actions.order.capture().then(function(details) {
+          // This function shows a transaction success message to your buyer.
+          console.log(JSON.stringify(details));
+          window.location.href="../handle/transact.php?status="+details.status;
+          //alert("Transaction completed by " + details.payer.name.given_name+"value"+"status"+details.status);
+        });
+      }
+    }).render("#paypalbutton");
+    </script>
+    </div>
+    </body>
 
+
+    ';
+}
+else{
+    header('location:../html/login.php');
+    exit();
+}
+?>
 </html>
+
+
+

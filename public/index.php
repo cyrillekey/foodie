@@ -98,7 +98,7 @@ else{
                                 <li class="clearfix">
                                 <img class="pdimg" src="img/'.$row['product_image'].'" alt="product image">
                                 <span class="item-name">'.$row['product_name'].'.</span>
-                                <span class="item-price">$ '.$row['product_unit_price'].'.00</span>
+                                <span class="item-price">$ '.$row['product_unit_price'].'</span>
                                 <span class="item-quantity">Quantity:01</span>
                                 <a href="handle/delfrom.php?remove='.$row['product_id'].'" class="item-quantity">Remove</a>
                         
@@ -149,7 +149,7 @@ else{
                  <img src="img/'.$row1['product_image'].'" width="300">
                  <p style="text-transform:capitalize;">'.$row1['product_name'].'</p>
                  <!--<p>' . $row1['product_desc'] . '</p>-->
-                 <p>Price '.$row1['product_unit_price'].'</p>
+                 <p>Price $ '.$row1['product_unit_price'].'</p>
                  <a href="handle/addtocart.php?pdid='.$row1['product_id'].'">
                  <button>Add to basket</button>
                  </a>

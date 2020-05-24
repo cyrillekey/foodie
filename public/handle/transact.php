@@ -2,25 +2,29 @@
 include('../../conf/conf.php');
 include('../../conf/pdo_conf.php');
 session_start();
+if(isset($_SESSION['username'])){
 if (1) {
     $items = $_SESSION['cart'];
     $cartitems = explode(",", $items);
     $total = 0;
     $shippin = 0;
     $tax = 0;
-    $username = "cyrille";
+    $username = $_SESSION['username'];
     $status = 0;
     $orderid = uniqid();
     $receipt = uniqid();
+    $_SESSION['orderkey']=rand(100,999);
     if (count(array_filter($cartitems))>0) {
-        $sql = "INSERT into order_table values(?,?,NOW(),?,?)";
+        $hasedpw=password_hash($_SESSION['orderkey'],PASSWORD_DEFAULT);
+        $sql = "INSERT into order_table values(?,?,NOW(),?,?,?)";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute(
                         array(
                             $orderid,
                             $username,
                             'shipped',
-                            ''
+                            '',
+                            $hasedpw
 
                         )
                     );
@@ -86,11 +90,15 @@ if (1) {
                 }
             }
         }
-        session_destroy();
         header("location:../html/mail.php?ord=".$orderid);
+        exit();
     } else {
         header("location:../html/product.php");
+        exit();
     }
 } else {
     header("location:../html/paymnet.php");
+    exit();
+}}else{
+    header("location:../html/login.php");
 }
