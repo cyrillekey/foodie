@@ -14,7 +14,7 @@ else{
 if(isset($_GET['status'])){
     $message=$_GET['status'];
 }else{
-    $message=0;
+    $message=nul;
 }
   ?>
 <!doctype html>
@@ -25,10 +25,7 @@ if(isset($_GET['status'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css"  media="screen and (min-width:600px)">
     <link rel="stylesheet" media="screen and (max-width:600px)" href="css/media.css" >
-    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.typekit.net/zub3tbp.css">
+
 
     <script src="js/jquery.js"></script>
     <script>
@@ -58,13 +55,17 @@ if(isset($_GET['status'])){
         
     </script>
     <script>
-        
+        alert("Added to cart");
     </script> 
 <?php
     if($message=="success"){
-        echo'alert("Added to cart");';
+        echo'<script>
+        alert("Added to cart");
+    </script> ';
     }elseif($message=="incart"){
-        echo'alert("Already added in cart");';
+        echo'<script>
+        alert("Already added to cart");
+    </script> ';
     }
 
 ?>    
