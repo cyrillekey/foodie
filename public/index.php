@@ -11,11 +11,6 @@ else{
     $cartitems=array();
     $total=0;
 }
-if(isset($_GET['status'])){
-    $message=$_GET['status'];
-}else{
-    $message=null;
-}
   ?>
 <!doctype html>
 <html>
@@ -53,19 +48,7 @@ if(isset($_GET['status'])){
             }
         }
         
-    </script>
-<?php
-    if($message=="success"){
-        echo'<script>
-        alert("Added to cart");
-    </script> ';
-    }elseif($message=="incart"){
-        echo'<script>
-        alert("Already added to cart");
-    </script> ';
-    }
-
-?>    
+    </script>   
 </head>
 <body>
     <div class="navsect">
