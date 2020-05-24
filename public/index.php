@@ -68,7 +68,7 @@ if(isset($_GET['status'])){
     <div class="navsect">
         <nav>
             <div class="logo">
-                <img src="img/icons/nf1_(4).jpg" alt="">
+            <a href="">Foodie</a>
             </div>
                 
             <div id="mainbar">

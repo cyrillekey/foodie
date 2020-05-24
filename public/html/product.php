@@ -55,8 +55,8 @@ else{
   <div class="naviganion">
 <div class="navsect">
         <nav>
-            <div class="logo">
-                <img src="../img/icons/nf1_(4).jpg" alt="">
+        <div class="logo">
+            <a href="../index.php">Foodie</a>
             </div>
                 
             <div id="mainbar">
