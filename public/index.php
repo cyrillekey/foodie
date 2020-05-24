@@ -14,7 +14,7 @@ else{
 if(isset($_GET['status'])){
     $message=$_GET['status'];
 }else{
-    $message=nul;
+    $message=null;
 }
   ?>
 <!doctype html>
@@ -54,9 +54,6 @@ if(isset($_GET['status'])){
         }
         
     </script>
-    <script>
-        alert("Added to cart");
-    </script> 
 <?php
     if($message=="success"){
         echo'<script>
