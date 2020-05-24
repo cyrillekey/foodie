@@ -125,7 +125,7 @@ else{
     
     
     <div id="landing">
-        <h1>Lorem restaraunt</h1>
+        <h1>Foodie restaraunt</h1>
         <p>Get your food easily with the click of a button</p>
         <a href="html/product.php" class="btn">Order Now</a>
     </div>
