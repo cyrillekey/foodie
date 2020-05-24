@@ -169,15 +169,18 @@
     display: table;
     clear: both;
 }
-#hambur{
+#hambur a{
     position: absolute;
     top: 0;
     right: 0;
     height: 6vh;
+    width: 10vw;
     margin-top: 2vh;
     margin-right: 10px;
+    background-image: url(../img/icons/icons8-menu-50.png);
+    background-position: center;
+    background-size: contain;
 }
-
 #landing{
     height: 92vh;
     margin-top: 0vh;

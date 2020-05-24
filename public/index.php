@@ -83,7 +83,7 @@ if(isset($_GET['status'])){
                 <a href="javascript:void(0);" onClick="myFunction1()"><i class="fa fa-shopping-cart cart-icon"></i><span class="badge"><?php echo count(array_filter($cartitems));?></a>
             </div>
             <div id="hambur">
-                <a href="javascript:void(0);" onClick="myFunction()"><i class="far fa-bars"></i></a>
+                <a href="javascript:void(0);" onClick="myFunction()"></i></a>
             </div>
         </nav>
     </div>
