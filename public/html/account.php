@@ -88,7 +88,7 @@
 
         $sql="SELECT * FROM order_table WHERE user_id=? ORDER BY order_created DESC";
         $stmt=$pdo->prepare($sql);
-        $stmt->execute($_SESSION['username']);
+        $stmt->execute([$_SESSION['username']]);
         while($row=$stmt->fetch(PDO::FETCH_OBJ)){
             echo'<li ><a href="mail.php?ord='.$row->order_id.'">'.$row->order_id.'</a><span>'.$row->order_status.'</span></li>';
           }

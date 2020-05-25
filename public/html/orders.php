@@ -76,8 +76,7 @@
         				<th>User ID</th>
 						<th class="numeric">Order Creeated</th>
 						<th class="numeric">Order Status</th>
-						<th class="numeric">User_email</th>
-						<th class="numeric">User_email</th>
+						
         			</tr>
         		</thead>
         		<tbody>
