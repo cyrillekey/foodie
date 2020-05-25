@@ -1,0 +1,194 @@
+.body
+{
+  margin:0%;
+  padding:0%;
+}
+
+@media(max-width:990px)
+{
+nav
+{
+  margin:0%;
+  height:10vh;
+  background-color:#2A58AD;
+}
+
+nav > .container-fluid > i 
+{
+  color:white; 
+  margin-top:2%;
+  padding:10px;
+  font-size:20px;
+} 
+
+.material-icons
+{
+  margin-top:-2vh !important;
+  font-size: 22px !important;
+}
+
+.profile-card
+{
+  height:35vh;
+background-color:#2A58AD;
+}
+
+.pro-picture
+{
+  background-image: url('https://orig00.deviantart.net/0c10/f/2013/278/2/0/tumblr_profile_by_padder-d6pclrf.jpg');
+  height:20vh;
+  background-size:cover;
+  background-position:center center;
+  width:20vh;
+  border-radius:50%;
+  margin: auto;
+  border: 5px solid white;
+}
+
+.photo-name
+{
+  margin-top:3%;
+  color:white;
+  width:20vh;
+  height:20vh;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.tabs
+{
+  background-color:#2A58AD;
+}
+
+.tabs > li > a
+{
+  color:black !important;
+  font-family: 'Work Sans', sans-serif;
+  font-size:15px !important;
+  text-transform :  capitalize !important;
+}
+
+.container > .row > p
+{
+  border-bottom: 0.1px solid #BDBDBD !important;
+  cursor: pointer;
+}
+.review-information,.review-information1
+{
+  display:none;
+}
+.fa-angle-right{
+  transition : transform 0.5s ease-in;
+}
+.fa-angle-right.rotate{
+  transform : rotate(90deg);
+}
+  /*.footer {
+  height:8vh;
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+    font-weight:bolder;
+   background-color: #2A58AD;
+   color: #7F9CCE;
+   font-family: 'Work Sans', sans-serif;
+   text-align: center;
+}
+  
+  .footer-section1:hover{
+    color:#ffffff;
+  }
+  .footer-section2:hover{
+    color:#ffffff;
+  }
+  .footer-section3:hover{
+    color:#ffffff;
+  }
+  .footer-section4:hover{
+    color:#ffffff;
+  }
+   
+}
+*/
+.center{
+  align-items: center;
+}
+
+
+@media(min-width:950px)
+{
+
+.background{
+  background-color:#2A58AD;
+}
+.sidenav{
+  background-color:#2A58AD;
+}
+
+
+.photo-name
+{
+  color:white;
+  font-size: 20px !important;
+  font-family: 'Poppins', sans-serif;
+}
+
+.button-pro
+{
+outline:none;
+padding:12px;
+text-align:center;
+font-family: 'Work Sans', sans-serif;
+border:2px solid #207CC4;
+color: #ffffff;
+background-color: #2A58AD;
+ border-radius:50px;
+  cursor: pointer;
+}
+
+.options{
+  padding:20px;
+  cursor:pointer;
+  color:#7F9CCE;
+  transition : color 0.2s ease-in;
+}
+
+
+.option-name{
+  text-transform:upper;
+  font-size:20px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.options:hover{
+  color:#ffffff;
+  background-color:#1D4C9E;
+  border-left: 4px solid #23A4E5;
+}
+  
+nav.nav-center ul {
+    text-align: center;
+}
+nav.nav-center ul li {
+    display: inline;
+    float: none;
+ }
+nav.nav-center ul li a {
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    color:#56687D;
+    font-size:18px;
+}
+  
+  nav.nav-center ul li a:hover{
+    color:#26A6E5;
+  }
+  .z-depth-0{
+    box-shadow: none !important;
+  }
+  .main{
+    display:block;
+    margin-left:20vw;
+  } 
+} 
