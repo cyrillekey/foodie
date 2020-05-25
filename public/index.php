@@ -149,24 +149,23 @@ else{
              } else {
                  mysqli_stmt_execute($stmt);
                  $result = mysqli_stmt_get_result($stmt);
-                 while ($row1 = mysqli_fetch_assoc($result)) {
-                         echo'
-                 <div class="product--blue">
-               <div class="product_inner">
-                 <img src="img/'.$row1['product_image'].'" width="300">
-                 <p style="text-transform:capitalize;">'.$row1['product_name'].'</p>
-                 <!--<p>' . $row1['product_desc'] . '</p>-->
-                 <p>Price $ '.$row1['product_unit_price'].'</p>
-                 <a href="handle/addtocart.php?pdid='.$row1['product_id'].'">
-                 <button>Add to basket</button>
-                 </a>
-               </div>
-               <div class="product_overlay">
-                 <h2>Added to basket</h2>
-                 <i class="fa fa-check"></i>
-               </div>
-             </div>';
-                 }
+                    while ($row1 = mysqli_fetch_assoc($result)) {
+                        echo'
+                <div class="product--blue">
+              <div class="product_inner">
+                <img src="img/'.$row1['product_image'].'" width="300">
+                <p style="text-transform:capitalize;">'.$row1['product_name'].'</p>
+                <!--<p>' . $row1['product_desc'] . '</p>-->
+                <p>Price $ '.$row1['product_unit_price'].'</p>
+                <a href="#" id="'.$row1['product_id'].'" class="addtocart">
+                <button>Add to basket</button>
+                </a>
+              </div>
+              <div class="product_overlay">
+                <h2>Added to basket</h2>
+                <i class="fa fa-check"></i>
+              </div>';
+                }
                 }
              ?>     
         </div>
