@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+		@import url(https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css);
         @media only screen and (max-width: 800px) {
     
     /* Force table to not be like tables anymore */
@@ -82,7 +83,7 @@
                      $sql="SELECT * FROM users_table";
                      $stmt=$pdo->prepare($sql);
                      $stmt->execute();
-                     while($row=$stmt->fetchAll(PDO::FETCH_OBJ)){
+                     while($row=$stmt->fetch(PDO::FETCH_OBJ)){
                          echo'<tr>
                          <td data-title="Code">'.$row->user_number.'.</td>
                          <td data-title="Company">'.$row->user_id.'.</td>
