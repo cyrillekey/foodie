@@ -44,6 +44,7 @@
 #mainbar{
     display: none;
     position: absolute;
+    z-index: 1;
 }
 #mainbar ul li{
     width: 100vw;
