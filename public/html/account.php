@@ -41,9 +41,6 @@
   <?php
     session_start();
     if(isset($_SESSION['username'])){
-      $sql="SELECT * FROM users_table where user_id=?";
-      $stmt=$pdo->prepare($sql);
-      $stmt->execute([$_SESSION['username']]);
       echo'
       <div class="hide-on-large-only">
       <nav>
@@ -63,7 +60,7 @@
         <p>
         <span class="photo-name">'.$_SESSION['username'].'</span>
       <br>
-      <span class="white-text" style="font-size:14px;"><i class="fa fa-map-marker white-text">&nbsp; &nbsp; </i>'.$_SESSION['user_mail'].'</span>
+      <span class="white-text" style="font-size:14px;"><i class="fa fa-map-marker white-text">&nbsp; &nbsp; </i>'.$_SESSION['usermail'].'</span>
       </p>
     </div >
     </p>
@@ -85,11 +82,19 @@
         </p>
         
         <p class="review1 col s12" style="font-weight:bolder; font-family: "Poppins", sans-serif;"> Orders <i class="fa fa-angle-right right" style="font-weight:bolder"></i><br><br></p>
-        <p class="review-information1">
-         still under construction
+        <div class="review-information1">
+        <ul class="orders">
+            <li style="font-weight:bold;border-bottom:solid 1px black;"><a href="">Order ID</a><span>Status</span></li>';
+
+        $sql="SELECT * FROM order_table WHERE user_id=? ORDER BY order_created DESC";
+        $stmt=$pdo->prepare($sql);
+        $stmt->execute($_SESSION['username']);
+        while($row=$stmt->fetch(PDO::FETCH_OBJ)){
+            echo'<li ><a href="mail.php?ord='.$row->order_id.'">'.$row->order_id.'</a><span>'.$row->order_status.'</span></li>';
+          }
+          echo'<br>
           <br>
-          <br>
-        </p>    
+        </div>    
         <p class="col s12" style="font-weight:bolder;font-family: "Poppins", sans-serif;">My Reviews<i class="fa fa-angle-right right" style="font-weight:bolder"></i><br><br></p>
         
         <p class="col s12" style="font-weight:bolder;font-family: "Poppins", sans-serif;">Logout <i class="fa fa-angle-right right" style="font-weight:bolder"></i><br><br></p>
