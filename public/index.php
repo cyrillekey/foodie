@@ -18,15 +18,15 @@ else{
 <meta charset="utf-8">
 <title>Foodie</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="js/jquery.js"></script>
     <link rel="stylesheet" href="css/style.css"  media="screen and (min-width:600px)">
     <link rel="stylesheet" media="screen and (max-width:600px)" href="css/media.css" >
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.typekit.net/zub3tbp.css">
-
-
-    <script src="js/jquery.js"></script>
+    
     <script>
         
         function myFunction(){
@@ -52,29 +52,29 @@ else{
             }
         }
         
-    </script>   
+    </script> 
 </head>
 <body>
+<script src="js/addajax.js"></script>
     <div class="navsect">
         <nav>
             <div class="logo">
-            <a href="" class="logop">Foodie</a>
+                <a href="" class="logop">Foodie</a>
             </div>
                 
             <div id="mainbar">
                 <ul>
                     <li><a href="">Home</a></li>
-                    <li><a href="html/account.php">Account</a></li>
-                    <li><a href="html/products.php">Order</a></li>
-                    <li><a href="#vief">Contact Us</a></li>
-                    <li><a href="html/login.php">Login/Signup</a></li>
+                    <li><a href="">Account</a></li>
+                    <li><a href="">Order</a></li>
+                    <li><a href="">Contact Us</a></li>
                 </ul>
             </div>
             <div class="cart">
                 <a href="javascript:void(0);" onClick="myFunction1()"><i class="fa fa-shopping-cart cart-icon"></i><span class="badge"><?php echo count(array_filter($cartitems));?></a>
             </div>
             <div id="hambur">
-                <a href="javascript:void(0);" onClick="myFunction()"></i></a>
+                <a href="javascript:void(0);" onClick="myFunction()"></a>
             </div>
         </nav>
     </div>
@@ -90,7 +90,7 @@ else{
             </div>
                 <ul class="shopping-cart-items">
                     <?php
-                        if(count(array_filter($cartitems))){
+                        if(count(array_filter($cartitems))>0){
                         foreach($cartitems as $key=>$pid){
                         $sql = "SELECT * FROM product_table where product_id='$pid'";
                         $stmt = mysqli_stmt_init($conn);
@@ -107,7 +107,7 @@ else{
                                 <span class="item-name">'.$row['product_name'].'.</span>
                                 <span class="item-price">$ '.$row['product_unit_price'].'</span>
                                 <span class="item-quantity">Quantity:01</span>
-                                <a href="handle/delfrom.php?remove='.$row['product_id'].'" class="item-quantity">Remove</a>
+                                <a href="handle/delfrom.php?remove='.$row['product_id'].'" class="item-quantity" onClick="addto('.$row['product_id'].')">Remove</a>
                         
                     </li>
                                 ';      
@@ -132,7 +132,7 @@ else{
     
     
     <div id="landing">
-        <h1>Foodie restaraunt</h1>
+        <h1>Lorem restaraunt</h1>
         <p>Get your food easily with the click of a button</p>
         <a href="html/product.php" class="btn">Order Now</a>
     </div>
@@ -157,25 +157,23 @@ else{
                  <p style="text-transform:capitalize;">'.$row1['product_name'].'</p>
                  <!--<p>' . $row1['product_desc'] . '</p>-->
                  <p>Price $ '.$row1['product_unit_price'].'</p>
-                 <a href="handle/addtocart.php?pdid='.$row1['product_id'].'">
+                 <a href="#" id="'.$row1['product_id'].'" class="addtocart">
                  <button>Add to basket</button>
                  </a>
                </div>
                <div class="product_overlay">
                  <h2>Added to basket</h2>
                  <i class="fa fa-check"></i>
-               </div>
-             </div>';
+               </div>';
                  }
                 }
              ?>     
         </div>
-        <div class="viewall">
+        <div class="viewall" id="viewww">
         <a href="html/product.php">View all products</a>
         </div>
-        
     </div>
-    <footer class="footer-section" style="margin-top: 2vh" id="vief">
+    <footer class="footer-section" style="margin-top: 2vh">
         <div class="container">
             <div class="footer-cta pt-5 pb-5">
                 <div class="row">
@@ -281,5 +279,6 @@ else{
             </div>
         </div>
     </footer>
+        
 </body>
 </html>
