@@ -76,7 +76,14 @@
   #terms textarea { width: 100%; text-align: center;}
 
   textarea:hover, textarea:focus, #items td.total-value textarea:hover, #items td.total-value textarea:focus, .delete:hover { background-color:#EEFF88; }
+  .logop{
+    font-family: 'Satisfy', cursive;
+    font-size: 30px;
+    font-weight: 400;
+    color: black;
+    text-decoration: none;
 
+}
   .delete-wpr { position: relative; }
   .delete { display: block; color: #000; text-decoration: none; position: absolute; background: #EEEEEE; font-weight: bold; padding: 0px 3px; border: 1px solid; top: -6px; left: -22px; font-family: Verdana; font-size: 12px; }
     </style>
@@ -101,12 +108,7 @@ Appleville, WI 53719
 Phone: (555) 555-5555</p>
 
             <div id="logo">
-
-              <div id="logohelp">
-                <input id="imageloc" type="text" size="50" value="" /><br />
-                (max width: 540px, max height: 100px)
-              </div>
-              <img id="image" src="images/logo.png" alt="logo" />
+            <a href="" class="logop">Foodie</a>
             </div>
 		
 		</div>
