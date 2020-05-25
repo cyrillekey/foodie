@@ -1,24 +1,38 @@
 <?php
 session_start();
-$itemaded=$_POST['pdid'];
 if(isset($_GET['loca'])){
     $loca=1;
 }else{
-    $loca=5;
+    $loca=0;
 }
 if(isset($_SESSION['cart']) & !empty($_SESSION['cart'])){
     $items=$_SESSION['cart'];
     $cartitems=explode(",",$items);
-    if (in_array($itemaded,$cartitems)) {
-      echo'failed';
+    if (in_array($_GET['pdid'],$cartitems)) {
+        if($loca==0){
+        header("Location:../index.php?status=incart");
+    }
+        else{
+            header("Location:../html/product.php?status=incart");
+        }
     }
     else{
-        $items .=",".$itemaded;
+        $items .=",".$_GET['pdid'];
         $_SESSION['cart']=$items;
-        echo'success';
+        if($loca==0){
+        header("Location:../index.php?status=success");
+        }
+        else{
+            header("Location:../html/product.php?status=success");  
+        }
     }
 }else{
-        $items =$itemaded;
+        $items =$_GET['pdid'];
         $_SESSION['cart']=$items;
-        echo'success';
-       }
+        if($loca==0){
+        header("Location:../index.php?status=success");
+        }
+        else{
+            header("Location:../html/product.php?status=success");  
+        }
+}

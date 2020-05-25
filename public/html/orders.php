@@ -76,10 +76,7 @@
         				<th>User ID</th>
 						<th class="numeric">Order Creeated</th>
 						<th class="numeric">Order Status</th>
-<<<<<<< HEAD
 						
-=======
->>>>>>> 1fd1a16fe7e7708ea5178fd32d116ca9eb4b82ef
         			</tr>
         		</thead>
         		<tbody>
