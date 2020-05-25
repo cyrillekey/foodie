@@ -36,6 +36,29 @@
 					<span class="login100-form-title p-b-49">
 						Login
 					</span>
+						<?php
+							if(isset($_GET['error'])){
+								$error=$_GET['error'];
+							}else{
+								$error=null;
+							}
+							if($error=='missing'){
+								echo'<p style="text-align: center;color:red;">Please fill all fields.</p>';
+							}elseif($error=='invalmail'){
+								echo'<p style="text-align: center;color:red;">Mail entered is not correct.</p>';
+							}
+							elseif($error=='nouser'){
+								echo'<p style="text-align: center;color:red;">Account does not exist.</p>';
+							}
+							elseif($error=='wrongpass'){
+								echo'<p style="text-align: center;color:red;">Wrong password.</p>';
+							}
+
+
+						?>
+
+
+					
 
 					<div class="wrap-input100 validate-input" data-validate="Email is required">
 						<span class="label-input100">Email</span>

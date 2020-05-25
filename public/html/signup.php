@@ -36,6 +36,38 @@
 					<span class="login100-form-title p-b-49">
 						Signup
 					</span>
+					<?php
+							if(isset($_GET['error'])){
+								$error=$_GET['error'];
+							}else{
+								$error=null;
+							}
+							if($error=='missing'){
+								echo'<p style="text-align: center;color:red;">Please fill all fields.</p>';
+							}elseif($error=='invalmailuser'){
+								echo'<p style="text-align: center;color:red;">Mail and username entered is not correct.</p>';
+							}
+							elseif($error=='invalmail'){
+								echo'<p style="text-align: center;color:red;">Email entered is invalid.</p>';
+							}
+							elseif($error=='invaluser'){
+								echo'<p style="text-align: center;color:red;">Username entered is invalid.</p>';
+							}elseif($error=='pwdlen'){
+								echo'<p style="text-align: center;color:red;">Password Must be 6 characters long or more.</p>';
+							}
+							elseif($error=='usertaken'){
+								echo'<p style="text-align: center;color:red;">Username already taken.</p>';
+							}
+							elseif($error=='mailtaken'){
+								echo'<p style="text-align: center;color:red;">Username entered is invalid.</p>';
+							}
+
+
+						?>
+
+
+
+
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
 						<span class="label-input100">Username</span>
