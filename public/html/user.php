@@ -87,7 +87,7 @@
                          echo'<tr>
                          <td data-title="User Numer">'.$row->user_number.'.</td>
                          <td data-title="User Name">'.$row->user_id.'.</td>
-                         <td data-title="Price" class="User Email">'.$row->user_email.'</td>
+                         <td data-title="User Email" class="numeric">'.$row->user_email.'</td>
                             </tr>';
                      }
                     
