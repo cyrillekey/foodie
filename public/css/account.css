@@ -192,3 +192,20 @@ nav.nav-center ul li a {
     margin-left:20vw;
   } 
 } 
+}
+.orders{
+  align-items: center;
+  
+} 
+.orders li {
+  width:100%;
+}
+.orders li a{
+  text-align: right;
+    text-decoration: none;
+    padding-left: 2vw;
+}
+.orders li span{
+  float: right;
+  padding-right: 6vw;
+}
