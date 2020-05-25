@@ -1,3 +1,6 @@
+<?php
+  include('../../conf/pdo_conf.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,27 +38,35 @@
     </script>
 </head>
 <body>
-<div class="hide-on-large-only">
-    <nav>
-      <div class="container-fluid">
-  
-      <a href="Javascript:void(0)" onclick="myfunctionbacc();" style="margin-left:2vw;"><i class="fa fa-arrow-left"></i></a>
-      <a href="../index.php" style="margin-top: 2vh;"><i class="material-icons right">home</i></a>
-  
-      </div>
-  
-    </nav>
-    <Section class="profile-card">
-      <div class="pro-picture">
-     
-      </div>
-      <div class="center">
-      <p>
-        <span class="photo-name">Keith</span>
-      <br>
+  <?php
+    session_start();
+    if(isset($_SESSION['username'])){
+      $sql="SELECT * FROM users_table where user_id=?";
+      $stmt=$pdo->prepare($sql);
+      $stmt->execute([$_SESSION['username']]);
+      echo'
+      <div class="hide-on-large-only">
+      <nav>
+        <div class="container-fluid">
     
-        <span class="white-text" style="font-size:14px;"><i class="fa fa-map-marker white-text">&nbsp; &nbsp; </i>Kenya</span>
+        <a href="Javascript:void(0)" onclick="myfunctionbacc();" style="margin-left:2vw;"><i class="fa fa-arrow-left"></i></a>
+        <a href="../index.php" style="margin-top: 2vh;"><i class="material-icons right">home</i></a>
+    
+        </div>
+    
+      </nav>
+      <Section class="profile-card">
+        <div class="pro-picture">
+       
+        </div>
+        <div class="center">
+        <p>
+        <span class="photo-name">'.$_SESSION['username'].'</span>
+      <br>
+      <span class="white-text" style="font-size:14px;"><i class="fa fa-map-marker white-text">&nbsp; &nbsp; </i>'.$_SESSION['user_mail'].'</span>
       </p>
+    </div >
+    </p>
     </div >
    </Section>
     <ul id="tabs-swipe-demo" class="tabs">
@@ -63,31 +74,25 @@
       <li class="tab col s3"><a class="active" href="#test-swipe-2"></i>&nbsp;Coupons</a></li>
       <li class="tab col s3"><a href="#test-swipe-3"></i>&nbsp;Reviews</a></li>
     </ul>
-
     <div id="test-swipe-1" class="col s12 hoverable">
       <br>
       <div class="container ">
         <div class="row">
-           <p class="review col s12" style="font-weight:bolder; font-family: 'Poppins', sans-serif;"> Profile <i class="fa fa-angle-right right" style="font-weight:bolder"></i><br><br></p>
+           <p class="review col s12" style="font-weight:bolder; font-family: "Poppins", sans-serif;"> Profile <i class="fa fa-angle-right right" style="font-weight:bolder"></i><br><br></p>
         <p class="review-information">
-          Lorem Ipsum hui.. You are active from long time
-          Lorem Ipsum hui.. You are active from long time
-          Lorem Ipsum hui.. You are active from long time
-          <br>
+            still under construction
           <br>
         </p>
         
-        <p class="review1 col s12" style="font-weight:bolder; font-family: 'Poppins', sans-serif;"> Orders <i class="fa fa-angle-right right" style="font-weight:bolder"></i><br><br></p>
+        <p class="review1 col s12" style="font-weight:bolder; font-family: "Poppins", sans-serif;"> Orders <i class="fa fa-angle-right right" style="font-weight:bolder"></i><br><br></p>
         <p class="review-information1">
-          Lorem Ipsum hui.. You are active from long time
-          Lorem Ipsum hui.. You are active from long time
-          Lorem Ipsum hui.. You are active from long time
+         still under construction
           <br>
           <br>
         </p>    
-        <p class="col s12" style="font-weight:bolder;font-family: 'Poppins', sans-serif;">My Reviews<i class="fa fa-angle-right right" style="font-weight:bolder"></i><br><br></p>
+        <p class="col s12" style="font-weight:bolder;font-family: "Poppins", sans-serif;">My Reviews<i class="fa fa-angle-right right" style="font-weight:bolder"></i><br><br></p>
         
-        <p class="col s12" style="font-weight:bolder;font-family: 'Poppins', sans-serif;">Logout <i class="fa fa-angle-right right" style="font-weight:bolder"></i><br><br></p>
+        <p class="col s12" style="font-weight:bolder;font-family: "Poppins", sans-serif;">Logout <i class="fa fa-angle-right right" style="font-weight:bolder"></i><br><br></p>
             
         
         
@@ -96,12 +101,21 @@
 
   </div>
     <div id="test-swipe-2" class="col s12 ">
-      <div style="min-height:30vh; background-image:url('http://www.defundtheitu.org/wp-content/uploads/2014/08/HostGator-Coupons.png')" >
+      <div style="min-height:30vh; background-image:url("http://www.defundtheitu.org/wp-content/uploads/2014/08/HostGator-Coupons.png")" >
             <p>Hello world</p>
       </div>
    </div>
     <div id="test-swipe-3" class="col s12 ">Test 3</div>
    
 </div>
+      ';
+
+    }
+    else{
+      header("location:login.php");
+      exit();
+    }
+  
+  ?>   
 </body>
 </html>
