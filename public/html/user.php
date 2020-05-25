@@ -80,14 +80,14 @@
         		<tbody>
                     <?php
                      include('../../conf/pdo_conf.php');
-                     $sql="SELECT * FROM users_table";
+                     $sql="SELECT * FROM users_table ORDER BY users_table.user_number ASC";
                      $stmt=$pdo->prepare($sql);
                      $stmt->execute();
                      while($row=$stmt->fetch(PDO::FETCH_OBJ)){
                          echo'<tr>
-                         <td data-title="Code">'.$row->user_number.'.</td>
-                         <td data-title="Company">'.$row->user_id.'.</td>
-                         <td data-title="Price" class="numeric">'.$row->user_email.'</td>
+                         <td data-title="User Numer">'.$row->user_number.'.</td>
+                         <td data-title="User Name">'.$row->user_id.'.</td>
+                         <td data-title="Price" class="User Email">'.$row->user_email.'</td>
                             </tr>';
                      }
                     
