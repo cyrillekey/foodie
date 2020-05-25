@@ -61,10 +61,11 @@ else{
                 
             <div id="mainbar">
                 <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Account</a></li>
-                    <li><a href="">Order</a></li>
-                    <li><a href="">Contact Us</a></li>
+                    <li><a href="../index.php">Home</a></li>
+                    <li><a href="account.php">Account</a></li>
+                    <li><a href="Checkout.php">Checkout</a></li>
+                    <li><a href="../index.php/#vief">Contact Us</a></li>
+                    <li><a href="login.php">Login/Signup</a></li>
                 </ul>
             </div>
             <div class="cart">
