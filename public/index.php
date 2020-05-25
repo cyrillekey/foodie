@@ -64,9 +64,10 @@ else{
             <div id="mainbar">
                 <ul>
                     <li><a href="">Home</a></li>
-                    <li><a href="">Account</a></li>
-                    <li><a href="">Order</a></li>
-                    <li><a href="">Contact Us</a></li>
+                    <li><a href="html/account.php">Account</a></li>
+                    <li><a href="html/products.php">Order</a></li>
+                    <li><a href="#vief">Contact Us</a></li>
+                    <li><a href="html/login.php">Login/Signup</a></li>
                 </ul>
             </div>
             <div class="cart">
@@ -174,7 +175,7 @@ else{
         </div>
         
     </div>
-    <footer class="footer-section" style="margin-top: 2vh">
+    <footer class="footer-section" style="margin-top: 2vh" id="vief">
         <div class="container">
             <div class="footer-cta pt-5 pb-5">
                 <div class="row">
