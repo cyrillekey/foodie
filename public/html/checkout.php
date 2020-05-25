@@ -99,16 +99,16 @@ else{
             <ul>
                 <li class="totalRow">
                     <span class="label">Subtotal</span>
-                    <span class="value"><?php echo "$$total.00"?></span>
+                    <span class="value">$ <?php echo "$total"?></span>
 
                 </li>
                 <li class="totalRow">
                     <span class="label">Shipping</span>
-                    <span class="value">$<?php echo "$shippin"?></span>
+                    <span class="value">$ <?php echo "$shippin"?></span>
                 </li>
                 <li class="totalRow">
                     <span class="label">Tax</span>
-                    <span class="value">$<?php echo "$tax"?></span>
+                    <span class="value">$ <?php echo "$tax"?></span>
                 </li>
                 <li class="totalRow final">
                     <span class="label">Total</span>
