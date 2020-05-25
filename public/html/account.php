@@ -97,7 +97,7 @@
         </div>    
         <p class="col s12" style="font-weight:bolder;font-family: "Poppins", sans-serif;">My Reviews<i class="fa fa-angle-right right" style="font-weight:bolder"></i><br><br></p>
         
-        <p class="col s12" style="font-weight:bolder;font-family: "Poppins", sans-serif;">Logout <i class="fa fa-angle-right right" style="font-weight:bolder"></i><br><br></p>
+        <p class="col s12" style="font-weight:bolder;font-family: "Poppins", sans-serif;"><a href="../handle/clearcart.php">Logout</a> <i class="fa fa-angle-right right" style="font-weight:bolder"></i><br><br></p>
             
         
         
