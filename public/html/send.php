@@ -25,7 +25,7 @@ use SendGrid\Mail\OpenTracking;
 use SendGrid\Mail\SubscriptionTracking;
 use SendGrid\Mail\Ganalytics;
 use SendGrid\Mail\ReplyTo;
-$from = new SendGrid\Email(null, "cyrilleotieno7@gmail.com");
+$from = new SendGrid\Email(null, "cyrilleotieno7@heroku.com");
 $subject = "Hello World from the SendGrid PHP Library!";
 $to = new SendGrid\Email(null, "cyrilleotieno83@gmail.com");
 $content = new SendGrid\Content("text/plain", "Hello, Email!");
