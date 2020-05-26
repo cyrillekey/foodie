@@ -39,6 +39,7 @@ try {
     print $response->statusCode() . "\n";
     print_r($response->headers());
     print $response->body() . "\n";
+    print"it worked";
 } catch (Exception $e) {
     echo 'Caught exception: '.  $e->getMessage(). "\n";
 }
