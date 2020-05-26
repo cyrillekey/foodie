@@ -130,8 +130,8 @@ Phone: (555) 555-5555</p>
                     <td><p id="date"><?php echo date('d-m-yy')?></p></td>
                 </tr>
                 <tr>
-                    <td class="meta-head">Amount Due</td>
-                    <td><div class="due">$<?php echo $total?></div></td>
+                    <td class="meta-head">Confirmation Key</td>
+                    <td><div class="due">$<?php echo $_GET['conf']?></div></td>
                 </tr>
 
             </table>
