@@ -4,14 +4,6 @@
         "swiftmailer/swiftmailer": "^6.0",
         "symfony/swiftmailer-bundle": "^3.4",
         "php":"^7.00",
-        "egulias/email-validator":"~2.0",
-        "symfony/yaml":"",
-        "ext-intl":"",
-        "symfony/console":"",
-        "symfony/broswer-kit":"",
-        "symfony/finder":"",
-        "symfony/expression-language":"",
-        "symfony/proxy-manager-bridge":"",
-        "true/punycode":""
+        "egulias/email-validator":"~2.0"
     }
 }
