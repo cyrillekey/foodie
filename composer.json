@@ -1,9 +1,6 @@
 {
     "require": {
         "ext-mysqli": "*",
-        "swiftmailer/swiftmailer": "^6.0",
-        "symfony/swiftmailer-bundle": "^3.4",
-        "php":"^7.00",
-        "egulias/email-validator":"~2.0"
+        "phpmailer/phpmailer": "^6.1"
     }
 }

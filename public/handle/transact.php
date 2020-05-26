@@ -95,7 +95,7 @@ if ($status=="COMPLETED") {
                 }
             }
         }
-        header("location:../html/mail.php?ord=$orderid&conf=$orderkey");
+        header("location:../html/send_invoice.php?ord=$orderid&conf=$orderkey");
         exit();
     } else {
         header("location:../html/product.php");
