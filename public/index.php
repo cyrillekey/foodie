@@ -155,7 +155,7 @@ else{
                          echo'
                  <div class="product--blue">
                <div class="product_inner">
-                 <img src="img/'.$row1['product_image'].'" width="300">
+                 <a href=""><img src="img/'.$row1['product_image'].'" width="300"></a>
                  <p style="text-transform:capitalize;">'.$row1['product_name'].'</p>
                  <!--<p>' . $row1['product_desc'] . '</p>-->
                  <p>Price $ '.$row1['product_unit_price'].'</p>';
