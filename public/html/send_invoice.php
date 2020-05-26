@@ -32,7 +32,7 @@ require('../../sendmail/vendor/autoload.php');
           $stmt=$pdo->prepare($sql);
           $stmt->execute([$order]);
           $row=$stmt->fetch(PDO::FETCH_OBJ);
-
+          $resp=$_SESSION['usermail'];
 $mail = new PHPMailer();
 $mail->IsSMTP();
 $mail->Mailer = "smtp";
@@ -44,11 +44,12 @@ $mail->Host       = "smtp.gmail.com";
 $mail->Username   = "cyrilleotieno7@gmail.com";
 $mail->Password   = "STACYM456";
 $mail->IsHTML(true);
-$mail->AddAddress("cyrilleotieno83@gmail.com", "recipient-name");
-$mail->SetFrom("cyrilleotieno7@gmail.com", "from-name");
+$mail->AddAddress($resp, $username);
+$mail->SetFrom("cyrilleotieno7@gmail.com", "Cyrille");
 /*$mail->AddReplyTo("reply-to-email@domain", "reply-to-name");
 $mail->AddCC("cc-recipient-email@domain", "cc-recipient-name");*/
 $mail->Subject = "Test is Test Email sent via Gmail SMTP Server using PHP Mailer";
+
 $content = "<!DOCTYPE html>
 <html lang='en'>
 
