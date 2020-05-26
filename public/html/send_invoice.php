@@ -260,7 +260,7 @@ echo'
 </body>
 
 </html>';
-$code=ob_get_contents();ob_end_flush();
+$code=ob_get_contents();ob_end_clean();
 $content = $code;
 $mail->MsgHTML($content); 
 if(!$mail->Send()) {
