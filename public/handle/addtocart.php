@@ -1,9 +1,9 @@
 <?php
 session_start();
 if(isset($_GET['loca'])){
-    $loca=1;
-}else{
     $loca=0;
+}else{
+    $loca=4;
 }
 if(isset($_SESSION['cart']) & !empty($_SESSION['cart'])){
     $items=$_SESSION['cart'];
