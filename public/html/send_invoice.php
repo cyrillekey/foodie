@@ -9,5 +9,10 @@ $message=(new Swift_Message("Invoice"))
     ->setTo(array('cyrilleotieno83@gmail.com'))
     ->setBody("hello it worked");
     $result=$mailer->send($message);
-    
+    if($result){
+        echo"sent";
+    }else{
+        echo"failed";
+    }
+
 ;
