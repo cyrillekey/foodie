@@ -9,7 +9,7 @@ require '../../sendmail/vendor/phpmailer/phpmailer/src/Exception.php';
 require '../../sendmail/vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require '../../sendmail/vendor/phpmailer/phpmailer/src/SMTP.php';
 require('../../sendmail/vendor/autoload.php');
-  session_start();
+  try{session_start();
   include('../../conf/pdo_conf.php');
   $total=0;
   $order=$_GET['ord'];
@@ -243,5 +243,8 @@ if(!$mail->Send()) {
   var_dump($mail);
 } else {
   echo "Email sent successfully";
+}}
+catch(Exception $e){
+  echo"error",$e->getMessage();
 }
 ?>
