@@ -19,6 +19,7 @@
         WHERE (((order_table.order_id)=?))";
           $stmt=$pdo->prepare($sql);
           $stmt->execute([$order]);
+          $row=$stmt->fetch(PDO::FETCH_OBJ);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -132,7 +133,7 @@ Phone: (555) 555-5555</p>
                 <tr>
 
                     <td class="meta-head">Date</td>
-                    <td><p id="date"><?php echo $stmt->order_created ?></p></td>
+                    <td><p id="date"><?php echo $row->order_created ?></p></td>
                 </tr>
                 <tr>
                     <td class="meta-head">Confirmation Key</td>
