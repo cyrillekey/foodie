@@ -1,6 +1,6 @@
 {
     "require": {
         "ext-mysqli": "*",
-        "phpmailer/phpmailer": "^6.1"
+        "sendgrid/sendgrid": "~5.0.9"
     }
 }
