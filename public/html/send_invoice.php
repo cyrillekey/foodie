@@ -46,8 +46,8 @@ $mail->Host       = "smtp.gmail.com";
 $mail->Username   = "cyrilleotieno7@gmail.com";
 $mail->Password   = "STACYM456";
 $mail->IsHTML(true);
-$mail->AddAddress('cyrilleotieno83@gmail.com', "hello");
-$mail->SetFrom('cyrilleotieno83@gmail.com', $username);
+$mail->AddAddress('detacag438@whowlft.com', "hello");
+$mail->SetFrom('cyrilleotieno83@gmail.com', 'we dont know');
 /*$mail->AddReplyTo("reply-to-email@domain", "reply-to-name");
 $mail->AddCC("cc-recipient-email@domain", "cc-recipient-name");*/
 $mail->Subject = "Test is Test Email sent via Gmail SMTP Server using PHP Mailer";
