@@ -3,6 +3,7 @@
 include('sendmail/vendor/autoload.php');
 require('vendor/phpmailer/phpmailer/src/PHPMailer.php');
 */
+session_start();
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require '../../sendmail/vendor/phpmailer/phpmailer/src/Exception.php';
@@ -10,7 +11,7 @@ require '../../sendmail/vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require '../../sendmail/vendor/phpmailer/phpmailer/src/SMTP.php';
 require('../../sendmail/vendor/autoload.php');
 if(isset($_SESSION['username'])){
-  try{session_start();
+  try{
   include('../../conf/pdo_conf.php');
   $total=0;
   $order=$_GET['ord'];
