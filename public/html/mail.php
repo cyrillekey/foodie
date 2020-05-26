@@ -14,6 +14,11 @@
     $shippin = 0.03 * $total;
         $tax = 0.015 * $total;
     
+        $sql="SELECT order_table.order_id, order_table.user_id, users_table.user_email, order_table.order_created, product_order_table.product_id, product_order_table.quantity,product_table.product_unit_price,product_table.product_name,product_table.product_desc
+        FROM users_table INNER JOIN (order_table INNER JOIN (product_table INNER JOIN product_order_table ON product_table.product_id = product_order_table.product_id) ON order_table.order_id = product_order_table.order_id) ON users_table.user_id = order_table.user_id
+        WHERE (((order_table.order_id)=?))";
+          $stmt=$pdo->prepare($sql);
+          $stmt->execute([$order]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,7 +132,7 @@ Phone: (555) 555-5555</p>
                 <tr>
 
                     <td class="meta-head">Date</td>
-                    <td><p id="date"><?php echo date('d-m-yy')?></p></td>
+                    <td><p id="date"><?php echo $stmt->order_created ?></p></td>
                 </tr>
                 <tr>
                     <td class="meta-head">Confirmation Key</td>
@@ -148,11 +153,7 @@ Phone: (555) 555-5555</p>
 		      <th>Price</th>
       </tr>
       <?php
-      $sql="SELECT order_table.order_id, order_table.user_id, users_table.user_email, order_table.order_created, product_order_table.product_id, product_order_table.quantity,product_table.product_unit_price,product_table.product_name,product_table.product_desc
-      FROM users_table INNER JOIN (order_table INNER JOIN (product_table INNER JOIN product_order_table ON product_table.product_id = product_order_table.product_id) ON order_table.order_id = product_order_table.order_id) ON users_table.user_id = order_table.user_id
-      WHERE (((order_table.order_id)=?))";
-        $stmt=$pdo->prepare($sql);
-        $stmt->execute([$order]);
+      
       while($row=$stmt->fetch(PDO::FETCH_OBJ)){
         echo'<tr class="item-row">
         <td class="item-name"><div class="delete-wpr"><p style="text-transform:capitalize">'.$row->product_name.'</p></div></td>
