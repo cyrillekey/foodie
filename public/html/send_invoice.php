@@ -46,7 +46,7 @@ $mail->Host       = "smtp.gmail.com";
 $mail->Username   = "FOODIEKEN@gmail.com";
 $mail->Password   = "WHYDOYOUCARE";
 $mail->IsHTML(true);
-$mail->AddAddress('detacag438@whowlft.com', "hello");
+$mail->AddAddress( $resp, "hello");
 $mail->SetFrom('cyrilleotieno83@gmail.com', 'Foodie ');
 /*$mail->AddReplyTo("reply-to-email@domain", "reply-to-name");
 $mail->AddCC("cc-recipient-email@domain", "cc-recipient-name");*/
@@ -226,24 +226,24 @@ echo'
 		  <tr>
 		      <td colspan="2" class="blank"> </td>
 		      <td colspan="2" class="total-line">Subtotal</td>
-		      <td class="total-value"><div id="subtotal">$<?php echo $total?></div></td>
+		      <td class="total-value"><div id="subtotal">$'.$total.'</div></td>
 		  </tr>
 		  <tr>
 
 		      <td colspan="2" class="blank"> </td>
 		      <td colspan="2" class="total-line">Shipping</td>
-		      <td class="total-value"><div id="total">$<?php echo $shippin?></div></td>
+		      <td class="total-value"><div id="total">$'.$shippin.'</div></td>
 		  </tr>
 		  <tr>
 		      <td colspan="2" class="blank"> </td>
 		      <td colspan="2" class="total-line">Tax</td>
 
-		      <td class="total-value"><p id="paid">$<?php echo $tax?></p></td>
+		      <td class="total-value"><p id="paid">$'.$tax.'</p></td>
 		  </tr>
 		  <tr>
 		      <td colspan="2" class="blank"> </td>
 		      <td colspan="2" class="total-line balance">Grand Total</td>
-		      <td class="total-value balance"><div class="due">$<?php echo ($total+$tax+$shippin)?></div></td>
+		      <td class="total-value balance"><div class="due">$'.($total+$tax+$shippin).'</div></td>
 		  </tr>
 		
 		</table>
