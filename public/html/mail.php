@@ -131,7 +131,7 @@ Phone: (555) 555-5555</p>
                 </tr>
                 <tr>
                     <td class="meta-head">Confirmation Key</td>
-                    <td><div class="due">$<?php echo $_GET['conf']?></div></td>
+                    <td><div class="due">#<?php echo $_GET['conf']?></div></td>
                 </tr>
 
             </table>
