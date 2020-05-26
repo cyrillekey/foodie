@@ -18,9 +18,9 @@ if ($status=="COMPLETED") {
     $status = 0;
     $orderid = uniqid();
     $receipt = uniqid();
-    $_SESSION['orderkey']=rand(100,999);
+    $orderkey=rand(100,999);
     if (count(array_filter($cartitems))>0) {
-        $hasedpw=password_hash($_SESSION['orderkey'],PASSWORD_DEFAULT);
+        $hasedpw=password_hash($orderkey,PASSWORD_DEFAULT);
         $sql = "INSERT into order_table values(?,?,NOW(),?,?,?)";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute(
@@ -95,7 +95,7 @@ if ($status=="COMPLETED") {
                 }
             }
         }
-        header("location:../html/mail.php?ord=".$orderid);
+        header("location:../html/mail.php?ord=".$orderid."$ conf=".$orderkey);
         exit();
     } else {
         header("location:../html/product.php");
