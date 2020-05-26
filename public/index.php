@@ -66,7 +66,7 @@ else{
                 <ul>
                     <li><a href="">Home</a></li>
                     <li><a href="html/account.php">Account</a></li>
-                    <li><a href="html/products.php">Order</a></li>
+                    <li><a href="html/product.php">Order</a></li>
                     <li><a href="#vief">Contact Us</a></li>
                     <li><a href="html/login.php">Login/Signup</a></li>
                 </ul>

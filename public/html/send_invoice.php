@@ -44,7 +44,7 @@ $mail->Host       = "smtp.gmail.com";
 $mail->Username   = "cyrilleotieno7@gmail.com";
 $mail->Password   = "STACYM456";
 $mail->IsHTML(true);
-$mail->AddAddress($resp, $username);
+$mail->AddAddress('cyrilleotieno83@gmail.com', $username);
 $mail->SetFrom("cyrilleotieno7@gmail.com", "Cyrille");
 /*$mail->AddReplyTo("reply-to-email@domain", "reply-to-name");
 $mail->AddCC("cc-recipient-email@domain", "cc-recipient-name");*/
