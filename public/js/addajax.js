@@ -1,3 +1,4 @@
+function hello(){
 $(document).ready(function(){
     $(".addtocart").click(function(){
         var addid=$(this).attr('id');
@@ -22,3 +23,4 @@ $(document).ready(function(){
                     
                 });
             });
+          }
