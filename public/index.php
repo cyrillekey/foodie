@@ -18,16 +18,16 @@ else{
 <meta charset="utf-8">
 <title>Foodie</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css"  media="screen and (min-width:600px)">
-    <link rel="stylesheet" media="screen and (max-width:600px)" href="css/media.css" >
+    <link rel="stylesheet" href="/css/style.css"  media="screen and (min-width:600px)">
+    <link rel="stylesheet" media="screen and (max-width:600px)" href="/css/media.css" >
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.typekit.net/zub3tbp.css">
 
 
-    <script src="js/jquery.js"></script>
-    <script src="js/addajax.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/addajax.js"></script>
     <script>
         
         function myFunction(){
