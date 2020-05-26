@@ -123,7 +123,8 @@ if(isset($_SESSION['username'])){
       return actions.order.create({
         purchase_units: [{
           amount: {
-            value:'.round(($total+$shippin+$tax),2).'
+            value:'.round(($total+$shippin+$tax),2).',
+            currency:"EUR"
           }
         }]
       }
