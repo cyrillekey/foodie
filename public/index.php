@@ -159,8 +159,8 @@ else{
                  <!--<p>' . $row1['product_desc'] . '</p>-->
                  <p>Price $ '.$row1['product_unit_price'].'</p>';
                  if($number==0){
-                 echo '<a href="/" onClick="return:false;">
-                 <button style="Background-color:grey">Out of Stock</button>
+                 echo '<a href="javascript:void(0)">
+                 <button style="Background-color:#f3f3f3">Out of Stock</button>
                  </a>';
 
                  }else{

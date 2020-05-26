@@ -140,23 +140,32 @@ else{
                  mysqli_stmt_execute($stmt);
                  $result = mysqli_stmt_get_result($stmt);
                  while ($row1 = mysqli_fetch_assoc($result)) {
-                         echo'
-                 <div class="product--blue">
-               <div class="product_inner">
-                 <img src="../img/'.$row1['product_image'].'" width="300">
-                 <p style="text-transform:capitalize;">'.$row1['product_name'].'</p>
-                 <!--<p>' . $row1['product_desc'] . '</p>-->
-                 <p>Price $'.$row1['product_unit_price'].'</p>
-                 <a href="../handle/addtocart.php?loca=produc & pdid='.$row1['product_id'].'">
-                 <button>Add to basket</button>
-                 </a>
-               </div>
-               <div class="product_overlay">
-                 <h2>Added to basket</h2>
-                 <i class="fa fa-check"></i>
-               </div>
-             </div>';
-                 }
+                    $number=$row1['product_stock'];
+                        echo'
+                <div class="product--blue">
+              <div class="product_inner">
+                <img src="img/'.$row1['product_image'].'" width="300">
+                <p style="text-transform:capitalize;">'.$row1['product_name'].'</p>
+                <!--<p>' . $row1['product_desc'] . '</p>-->
+                <p>Price $ '.$row1['product_unit_price'].'</p>';
+                if($number==0){
+                echo '<a href="javascript:void(0);" >
+                <button style="Background-color:#f3f3f3">Out of Stock</button>
+                </a>';
+
+                }else{
+                   echo '<a href="handle/addtocart.php?pdid='.$row1['product_id'].'">
+                   <button>Add to basket</button>
+                </a>';
+                }
+                echo '
+              </div>
+              <div class="product_overlay">
+                <h2>Added to basket</h2>
+                <i class="fa fa-check"></i>
+              </div>
+            </div>';
+                }
                 }
             
         ?>
