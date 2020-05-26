@@ -51,7 +51,7 @@ $mail->SetFrom($_SESSION['username'], "Cyrille");
 $mail->AddCC("cc-recipient-email@domain", "cc-recipient-name");*/
 $mail->Subject = "Test is Test Email sent via Gmail SMTP Server using PHP Mailer";
 
-$content = "<!DOCTYPE html>
+$content = ("<!DOCTYPE html>
 <html lang='en'>
 
 <head>
@@ -183,19 +183,18 @@ Phone: (555) 555-5555</p>
 		      <th>Quantity</th>
 		      <th>Price</th>
       </tr>
-      <?php
       
       while($row=$stmt->fetch(PDO::FETCH_OBJ)){
-        echo'<tr class='item-row'>
+        echo<tr class='item-row'>
         <td class='item-name'><div class='delete-wpr'><p style='text-transform:capitalize'>'.$row->product_name.'</p></div></td>
         <td class='description'><p style='text-transform:capitalize'>'.$row->product_desc.'</p</td>
         <td><p class='cost'>'.$row->product_unit_price.'</p></td>
         <td><p class='qty'>1</p></td>
         <td><span class='price'>'.$row->product_unit_price.'</span></td>
-        </tr>';
+        </tr>;
       }
 
-      ?>
+      
 		  <tr id='hiderow'>
 		    <td colspan='5'></td>
 		  </tr>
@@ -237,7 +236,7 @@ Phone: (555) 555-5555</p>
 </body>
 
 </html>
-";
+");
 $mail->MsgHTML($content); 
 if(!$mail->Send()) {
   echo "Error while sending Email.";
