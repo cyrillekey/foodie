@@ -43,8 +43,8 @@ $mail->SMTPAuth   = TRUE;
 $mail->SMTPSecure = "tls";
 $mail->Port       = 587;
 $mail->Host       = "smtp.gmail.com";
-$mail->Username   = "cyrilleotieno7@gmail.com";
-$mail->Password   = "STACYM456";
+$mail->Username   = "FOODIEKEN@gmail.com";
+$mail->Password   = "WHYDOYOUCARE";
 $mail->IsHTML(true);
 $mail->AddAddress('detacag438@whowlft.com', "hello");
 $mail->SetFrom('cyrilleotieno83@gmail.com', 'Foodie ');
@@ -56,7 +56,7 @@ $content = "hello world";
 $mail->MsgHTML($content); 
 if(!$mail->Send()) {
   echo "Error while sending Email.";
-  var_dump($mail);
+  //var_dump($mail);
 } else {
   echo "Email sent successfully";
 }}
