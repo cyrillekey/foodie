@@ -10,7 +10,7 @@ require '../../sendmail/vendor/phpmailer/phpmailer/src/Exception.php';
 require '../../sendmail/vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require '../../sendmail/vendor/phpmailer/phpmailer/src/SMTP.php';
 require('../../sendmail/vendor/autoload.php');
-if(isset($_SESSION['username'])){
+if(1){
   try{
   include('../../conf/pdo_conf.php');
   $total=0;
