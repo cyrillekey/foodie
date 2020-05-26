@@ -9,6 +9,7 @@ require '../../sendmail/vendor/phpmailer/phpmailer/src/Exception.php';
 require '../../sendmail/vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require '../../sendmail/vendor/phpmailer/phpmailer/src/SMTP.php';
 require('../../sendmail/vendor/autoload.php');
+if(isset($_SESSION['username'])){
   try{session_start();
   include('../../conf/pdo_conf.php');
   $total=0;
@@ -45,7 +46,7 @@ $mail->Username   = "cyrilleotieno7@gmail.com";
 $mail->Password   = "STACYM456";
 $mail->IsHTML(true);
 $mail->AddAddress('cyrilleotieno83@gmail.com', "hello");
-$mail->SetFrom("cyrilleotieno7@gmail.com", "Cyrille");
+$mail->SetFrom($_SESSION['username'], "Cyrille");
 /*$mail->AddReplyTo("reply-to-email@domain", "reply-to-name");
 $mail->AddCC("cc-recipient-email@domain", "cc-recipient-name");*/
 $mail->Subject = "Test is Test Email sent via Gmail SMTP Server using PHP Mailer";
@@ -246,5 +247,7 @@ if(!$mail->Send()) {
 }}
 catch(Exception $e){
   echo"error",$e->getMessage();
+}}else{
+  header("location:../index.php");
 }
 ?>
