@@ -1,5 +1,5 @@
 <?php
-require_once '../../vendor/autoload.php';
+include'../../vendor/autoload.php';
 $transport=(new Swift_SmtpTransport('smtp.gmail.com',456,"ssl") )
 ->setUSername('cyrilleotieno7@gmail.com'
 ->setPassword('STACYM456'));
