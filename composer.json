@@ -1,6 +1,7 @@
 {
     "require": {
         "ext-mysqli": "*",
-        "swiftmailer/swiftmailer": "^6.0"
+        "swiftmailer/swiftmailer": "^6.0",
+        "symfony/swiftmailer-bundle": "^3.4"
     }
 }
