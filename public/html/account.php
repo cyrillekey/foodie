@@ -1,5 +1,6 @@
 <?php
   include('../../conf/pdo_conf.php');
+  session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +40,6 @@
 </head>
 <body>
   <?php
-    session_start();
     if(isset($_SESSION['username'])){
       echo'
       <div class="hide-on-large-only">
