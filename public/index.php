@@ -164,7 +164,7 @@ else{
                  </a>';
 
                  }else{
-                    echo '<a href="handle/addtocart.php?pdid='.$row1['product_id'].'">
+                    echo '<a href="handle/addtocart.php?pdid='.$row1['product_id'].' id="'.$row1['product_id'].'" class="addtocart">
                     <button>Add to basket</button>
                  </a>';
                  }
