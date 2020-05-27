@@ -91,7 +91,7 @@ if ($status=="COMPLETED") {
                     );
                     
 
-
+                    /*
                     $sql="INSERT INTO payment_table(payment_id,order_id,payment_amount,payment_status,payment_final_capture) VALUES(?,?,?,?,?)";
                     $stmt=$pdo->prepare($sql);
                     $stmt->execute(array(
@@ -101,7 +101,7 @@ if ($status=="COMPLETED") {
                         $status,
                         $capture
                     ));
-
+                    */
                     //We've got this far without an exception, so commit the changes.
                     $pdo->commit();
                 }
