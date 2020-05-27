@@ -88,7 +88,9 @@ if ($status=="COMPLETED") {
                     $stmt->execute(array(
                         $tranid,
                         $orderid,
-                        $amount,$status,$capture
+                        $amount,
+                        $status,
+                        $capture
                     ));
 
                     //We've got this far without an exception, so commit the changes.
@@ -102,9 +104,11 @@ if ($status=="COMPLETED") {
                     echo $e->getMessage();
                     //Rollback the transaction.
                     $pdo->rollBack();
+                    exit();
                 }
             }
         }
+        unset($_SESSION['cart']);
         header("location:../html/send_invoice.php?ord=$orderid&conf=$orderkey");
         exit();
     } else {
