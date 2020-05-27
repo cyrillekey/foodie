@@ -267,7 +267,7 @@ if(!$mail->Send()) {
   echo "Error while sending Email.";
   //var_dump($mail);
 } else {
-  echo "Email sent successfully";
+  header("location:../html/account.php");  
 }}
 catch(Exception $e){
   echo"error",$e->getMessage();
