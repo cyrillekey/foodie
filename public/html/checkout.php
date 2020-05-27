@@ -117,10 +117,14 @@ else{
                 </li>
                 <li class="totalRow"><?php
                     if(isset($_SESSION['username'])){
-                    echo'<a href="../html/payment.php" class="btn continue">Checkout</a>';
+                        if(count(array_filter($cartitems)>0)){
+                    echo'<a href="payment.php" class="btn continue">Checkout</a>';
+                        }else{
+                            echo'<a href="product.php" class="btn continue">Checkout</a>';
+                        }
                     exit();
                     }else{
-                        echo'<a href="../html/login.php" class="btn continue">Checkout</a>';
+                        echo'<a href="login.php" class="btn continue">Checkout</a>';
                         exit();
                     }
                 ?></li>
