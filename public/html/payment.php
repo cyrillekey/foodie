@@ -139,9 +139,14 @@ if(isset($_SESSION['username'])){
         pay2.style.display="none";
         return actions.order.capture().then(function(details) {
           // This function shows a transaction success message to your buyer.
-          console.log(JSON.stringify(details));
-          window.location.href="../handle/transact.php?status="+details.status;
-          //alert("Transaction completed by " + details.payer.name.given_name+"value"+"status"+details.status);
+          var id=data.id;
+            var status=data.purchase_units[0].payments.captures[0].status;
+            var capture=data.purchase_units[0].payments.captures[0].final_capture;
+
+             var amount=data.purchase_units[0].payments.captures[0].amount.value;
+
+          window.location.href="../handle/transact.php?status="+status+"& id="+id+"&amount="+amount+"&finalc="+capture;
+         
         });
       }
     }).render("#paypalbutton");

@@ -11,11 +11,11 @@ if(isset($_SESSION['username'])){
 if ($status=="COMPLETED") {
     $items = $_SESSION['cart'];
     $cartitems = explode(",", $items);
-    $total = 0;
-    $shippin = 0;
-    $tax = 0;
+    ////"../handle/transact.php?status="+details.status+"& id="+id+"&amount="+amount+"&finalc="+capture;
+    $tranid=$_GET['id'];
+    $amount=$_GET['amount'];
+    $capture=$_GET['finalc'];
     $username = $_SESSION['username'];
-    $status = 0;
     $orderid = uniqid();
     $receipt = uniqid();
     $orderkey=rand(100,999);
@@ -80,6 +80,16 @@ if ($status=="COMPLETED") {
                             $pid
                         )
                     );
+                    
+
+
+                    $sql="INSERT INTO payment_table(payment_id,order_id,payment_amount,payment_status,payment_final_capture) VALUES(?,?,?,?,?)";
+                    $stmt=$pdo->prepare($sql);
+                    $stmt->execute(array(
+                        $tranid,
+                        $orderid,
+                        $amount,$status,$capture
+                    ));
 
                     //We've got this far without an exception, so commit the changes.
                     $pdo->commit();
