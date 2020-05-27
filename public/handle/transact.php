@@ -21,6 +21,8 @@ if ($status=="COMPLETED") {
     $orderkey=rand(100,999);
     if (count(array_filter($cartitems))>0) {
         $hasedpw=password_hash($orderkey,PASSWORD_DEFAULT);
+        try{
+        $pdo->beginTransaction();
         $sql = "INSERT into order_table values(?,?,NOW(),?,?,?)";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute(
@@ -33,6 +35,23 @@ if ($status=="COMPLETED") {
 
                         )
                     );
+                    $sql="INSERT INTO payment_table(payment_id,order_id,payment_amount,payment_status,payment_final_capture) VALUES(?,?,?,?,?)";
+                    $stmt=$pdo->prepare($sql);
+                    $stmt->execute(array(
+                        $tranid,
+                        $orderid,
+                        $amount,
+                        $status,
+                        $capture
+                    ));
+                $pdo->commit();
+                }catch(Exception $e){
+                    echo $e->getMessage();
+                    //Rollback the transaction.
+                    $pdo->rollBack();
+                    exit();
+                }
+
         foreach ($cartitems as $key => $pid) {
             $sql = "SELECT * FROM product_table where product_id='$pid'";
             $stmt = mysqli_stmt_init($conn);
@@ -45,18 +64,8 @@ if ($status=="COMPLETED") {
                 
                 try {
                     //We start our transaction.
-                    $pdo->beginTransaction();/*
-                    $sql = "INSERT into order_table values(?,?,NOW(),?,?)";
-                    $stmt = $pdo->prepare($sql);
-                    $stmt->execute(
-                        array(
-                            $orderid,
-                            $username,
-                            'shipped',
-                            ''
-
-                        )
-                    );*/
+                    $pdo->beginTransaction();
+                    
 
                     $sql = 'SELECT * FROM product_table where product_id=?';
                     $stmt = $pdo->prepare($sql);
