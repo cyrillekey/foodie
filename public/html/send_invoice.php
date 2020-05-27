@@ -209,7 +209,7 @@ Phone: (555) 555-5555</p>
       </tr>';
      
       
-      while($row=$stmt->fetch(PDO::FETCH_OBJ)){
+      do{
         echo'<tr class="item-row">
         <td class="item-name"><div class="delete-wpr"><p style="text-transform:capitalize">'.$row->product_name.'</p></div></td>
         <td class="description"><p style="text-transform:capitalize">'.$row->product_desc.'</p</td>
@@ -217,7 +217,7 @@ Phone: (555) 555-5555</p>
         <td><p class="qty">1</p></td>
         <td><span class="price">'.$row->product_unit_price.'</span></td>
         </tr>';
-      }
+      }while($row=$stmt->fetch(PDO::FETCH_OBJ));
 echo'
 		  <tr id="hiderow">
 		    <td colspan="5"></td>

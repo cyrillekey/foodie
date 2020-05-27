@@ -155,15 +155,15 @@ Phone: (555) 555-5555</p>
       </tr>
       <?php
       
-      while($row=$stmt->fetch(PDO::FETCH_OBJ)){
+      do{
         echo'<tr class="item-row">
         <td class="item-name"><div class="delete-wpr"><p style="text-transform:capitalize">'.$row->product_name.'</p></div></td>
         <td class="description"><p style="text-transform:capitalize">'.$row->product_desc.'</p</td>
         <td><p class="cost">'.$row->product_unit_price.'</p></td>
         <td><p class="qty">1</p></td>
         <td><span class="price">'.$row->product_unit_price.'</span></td>
-        </tr>';
-      }
+        </tr>';}
+        while($row=$stmt->fetch(PDO::FETCH_OBJ));
 
       ?>
 		  <tr id="hiderow">
