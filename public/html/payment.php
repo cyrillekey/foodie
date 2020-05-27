@@ -139,7 +139,7 @@ if(isset($_SESSION['username'])){
         pay2.style.display="none";
         return actions.order.capture().then(function(details) {
           // This function shows a transaction success message to your buyer.
-          var id=details.id;
+          var id=details.purchase_units[0].payments.captures[0].id;
             var status=details.purchase_units[0].payments.captures[0].status;
             var capture=details.purchase_units[0].payments.captures[0].final_capture;
 
