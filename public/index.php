@@ -209,9 +209,9 @@ else{
                     </div>
                     <div class="col-xl-4 col-md-4 mb-30">
                         <div class="single-cta">
-                            <i class="far fa-envelope-open"></i>
+                        <a href="cyrilleotieno83@gmail.com"><i class="far fa-envelope-open"></i></a>
                             <div class="cta-text">
-                                <h4><a href="cyrilleotieno83@gmail.com">Mail us</a></h4>
+                                <h4>Mail us</h4>
                                 <span></span>
                             </div>
                         </div>
