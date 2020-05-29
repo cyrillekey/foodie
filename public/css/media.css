@@ -48,7 +48,6 @@
 }
 #mainbar ul li{
     width: 100vw;
-    border-bottom:solid black thin;
     height: 40px;
     text-align: center;
     list-style: none;
