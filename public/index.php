@@ -211,8 +211,8 @@ else{
                         <div class="single-cta">
                             <i class="far fa-envelope-open"></i>
                             <div class="cta-text">
-                                <h4>Mail us</h4>
-                                <span>Cyrilleotieno83@gmail.com</span>
+                                <h4><a href="cyrilleotieno83@gmail.com">Mail us</a></h4>
+                                <span></span>
                             </div>
                         </div>
                     </div>
