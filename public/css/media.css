@@ -49,8 +49,8 @@
 #mainbar ul li{
     width: 100vw;
     border-bottom:solid black thin;
-    height: 30px;
-    text-align: left;
+    height: 40px;
+    text-align: center;
     list-style: none;
     background-color: white;
     
@@ -58,6 +58,7 @@
 #mainbar ul li a{
     text-decoration: none;
    color: black;
+   font-size: 20px;
 
 }
 #mainbar ul li a:hover{
@@ -912,7 +913,6 @@ ul {
 }
 .footer-widget ul li {
   display: inline-block;
-  float: left;
   width: 50%;
   margin-bottom: 12px;
 }
