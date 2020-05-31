@@ -143,7 +143,7 @@ else{
         <div class='row'>
 
              <?php
-             $sql = "SELECT * FROM product_table limit 4";
+             $sql = "SELECT * FROM product_table ORDER BY product_stock DESC limit 4";
              $stmt = mysqli_stmt_init($conn);
              if (!mysqli_stmt_prepare($stmt, $sql)) {
                  echo "failed to prepare";
